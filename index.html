@@ -3,17 +3,21 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>DuoDiscover</title>
+<title>DuoDiscover · Code optimization when evaluation is the bottleneck</title>
 <meta name="description" content="DuoDiscover: code optimization when the real benchmark is the bottleneck. Each agent co-discovers a target to optimize and a cheap yardstick to measure it; a fidelity test accepts a gain only when the true evaluation agrees; a lightweight orchestrator coordinates the fleet."/>
 <link rel="icon" href="assets/logo.png"/>
-<meta property="og:title" content="DuoDiscover"/>
+<meta property="og:type" content="website"/>
+<meta property="og:title" content="DuoDiscover: Code Optimization by Jointly Discovering What to Optimize and How to Evaluate"/>
+<meta property="og:description" content="Code optimization when the real benchmark is the bottleneck: each agent co-discovers a target and a cheap yardstick, and a fidelity test accepts a gain only when the true evaluation agrees."/>
 <meta property="og:image" content="assets/poster.png"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="assets/poster.png"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
 <style>
   :root{
-    --navy:#003262; --gold:#C27803; --goldink:#9A6000; --cardinal:#8C1515;
+    --goldink:#9A6000; --cardinal:#8C1515;
     --bg:#f7f4ee; --card:#ffffff; --line:#ece6d8; --ink:#263238; --grey:#5b6670;
     --duo:#003262; --head:#003262; --accent:#003262; --accentink:#ffffff;
     --shadow:rgba(0,50,98,.14);
@@ -28,7 +32,7 @@
     --shadow:rgba(0,0,0,.5);
     --grid:rgba(130,170,210,.045); --gridb:rgba(130,170,210,.07); --float:rgba(120,165,215,.14); --floatg:rgba(240,166,58,.15);
     --au1:rgba(194,120,3,.12); --au2:rgba(70,130,200,.18); --au3:rgba(70,130,200,.12);
-    --gold:#f0a63a; --goldink:#f0a63a;
+    --goldink:#f0a63a;
   }
   *{box-sizing:border-box}
   html{scroll-behavior:smooth}
@@ -94,7 +98,7 @@
 
   a{color:var(--accent)} a:hover{opacity:.85}
   .wrap{max-width:var(--maxw);margin:0 auto;padding:0 clamp(16px,4vw,22px)}
-  .toggle:focus-visible,.chip:focus-visible,a:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:12px}
+  .toggle:focus-visible,.chip:focus-visible,a:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
 
   /* theme toggle */
   .toggle{position:fixed;top:16px;right:16px;z-index:5;width:44px;height:44px;border-radius:50%;
@@ -172,7 +176,7 @@
   .stat{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:26px 22px;text-align:center;
     box-shadow:var(--rest);transition:transform .18s cubic-bezier(.2,.7,.2,1),box-shadow .2s,background .3s}
   .stat:hover{transform:translateY(-3px);box-shadow:var(--hover)}
-  .stat .big{font-size:clamp(34px,7vw,46px);font-weight:900;color:var(--duo);line-height:1;letter-spacing:-.02em;font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1}
+  .stat .big{font-size:clamp(34px,7vw,46px);font-weight:900;color:var(--duo);line-height:1;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
   .stat .lab{font-size:13px;color:var(--grey);margin-top:10px;font-weight:600;line-height:1.4}
   .authors{text-align:center;font-size:16px;max-width:820px;margin:0 auto;color:var(--ink);line-height:1.7}
   .authors sup{color:var(--grey);font-weight:700}
@@ -188,6 +192,7 @@
   @media(max-width:715px){.grid{grid-template-columns:repeat(2,1fr)}}
   @media(max-width:430px){.grid{grid-template-columns:1fr}}
 </style>
+<noscript><style>.reveal,.steps .step,.grid .stat{opacity:1!important;transform:none!important}</style></noscript>
 </head>
 <body>
 <div class="floaties" aria-hidden="true">
