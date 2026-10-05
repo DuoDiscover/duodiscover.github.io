@@ -17,6 +17,7 @@
     --bg:#f7f4ee; --card:#ffffff; --line:#ece6d8; --ink:#263238; --grey:#5b6670;
     --duo:#003262; --head:#003262; --accent:#003262; --accentink:#ffffff;
     --dot:rgba(0,50,98,.05); --shadow:rgba(0,50,98,.14);
+    --grid:rgba(0,50,98,.045); --gridb:rgba(0,50,98,.07); --float:rgba(0,92,171,.06);
     --au1:rgba(194,120,3,.12); --au2:rgba(0,50,98,.12); --au3:rgba(0,50,98,.07);
     --maxw:900px;
   }
@@ -24,6 +25,7 @@
     --bg:#0f1824; --card:#17232f; --line:#27333f; --ink:#e9eef3; --grey:#9fb0bd;
     --duo:#dbe7f3; --head:#cfe0f2; --accent:#2f6fb0; --accentink:#ffffff;
     --dot:rgba(130,170,210,.07); --shadow:rgba(0,0,0,.5);
+    --grid:rgba(130,170,210,.055); --gridb:rgba(130,170,210,.09); --float:rgba(90,150,210,.08);
     --au1:rgba(194,120,3,.16); --au2:rgba(70,130,200,.16); --au3:rgba(70,130,200,.10);
     --gold:#e0962a;
   }
@@ -33,8 +35,13 @@
     margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
     color:var(--ink);line-height:1.65;-webkit-font-smoothing:antialiased;position:relative;
     background-color:var(--bg);
-    background-image:radial-gradient(circle at 1px 1px, var(--dot) 1px, transparent 1.6px);
-    background-size:24px 24px;transition:background-color .35s ease,color .35s ease;
+    background-image:
+      linear-gradient(var(--grid) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid) 1px, transparent 1px),
+      linear-gradient(var(--gridb) 1px, transparent 1px),
+      linear-gradient(90deg, var(--gridb) 1px, transparent 1px);
+    background-size:34px 34px,34px 34px,136px 136px,136px 136px;
+    transition:background-color .35s ease,color .35s ease;
   }
   body::before{content:"";position:fixed;inset:-10%;z-index:-1;pointer-events:none;
     background:
@@ -43,6 +50,25 @@
       radial-gradient(50% 42% at 50% 104%, var(--au3), transparent 70%);
     filter:blur(6px);animation:drift 26s ease-in-out infinite alternate}
   @keyframes drift{from{transform:translate3d(0,0,0) scale(1)}to{transform:translate3d(0,-22px,0) scale(1.07)}}
+
+  /* floating brand shapes (the duo rounded-square motif) - subtle, "alive" */
+  .floaties{position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none}
+  .floatie{position:absolute;border-radius:28%;background:var(--float);
+    box-shadow:inset 0 0 0 1.5px var(--float);animation:floatup linear infinite}
+  .floatie.ring{background:transparent;box-shadow:inset 0 0 0 4px var(--float)}
+  @keyframes floatup{
+    0%{transform:translateY(16vh) rotate(0deg);opacity:0}
+    12%{opacity:1}
+    88%{opacity:1}
+    100%{transform:translateY(-120vh) rotate(130deg);opacity:0}}
+  .f1{left:7%;  width:46px; height:46px; animation-duration:34s; animation-delay:-4s}
+  .f2{left:22%; width:26px; height:26px; animation-duration:28s; animation-delay:-14s}
+  .f3{left:38%; width:60px; height:60px; animation-duration:46s; animation-delay:-22s}
+  .f4{left:55%; width:30px; height:30px; animation-duration:31s; animation-delay:-8s}
+  .f5{left:71%; width:52px; height:52px; animation-duration:40s; animation-delay:-30s}
+  .f6{left:85%; width:34px; height:34px; animation-duration:26s; animation-delay:-18s}
+  .f7{left:93%; width:22px; height:22px; animation-duration:37s; animation-delay:-2s}
+
   a{color:var(--accent)} a:hover{opacity:.85}
   .wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px}
 
@@ -54,7 +80,7 @@
 
   .reveal{opacity:0;transform:translateY(16px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
   .reveal.in{opacity:1;transform:none}
-  @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}body::before{animation:none}.mark{animation:none}}
+  @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}body::before{animation:none}.mark{animation:none}.floaties{display:none}}
 
   header{text-align:center;padding:72px 0 14px}
   .lockup{display:flex;align-items:center;justify-content:center;gap:clamp(14px,2vw,24px);flex-wrap:wrap}
@@ -114,6 +140,12 @@
 </style>
 </head>
 <body>
+<div class="floaties" aria-hidden="true">
+  <span class="floatie f1 ring"></span><span class="floatie f2"></span>
+  <span class="floatie f3 ring"></span><span class="floatie f4"></span>
+  <span class="floatie f5 ring"></span><span class="floatie f6"></span>
+  <span class="floatie f7"></span>
+</div>
 <button class="toggle" id="themeBtn" aria-label="Toggle dark mode">🌙</button>
 
 <header>
