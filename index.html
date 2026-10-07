@@ -133,8 +133,8 @@
 
   header{text-align:center;padding:clamp(44px,7vw,72px) 0 clamp(26px,4vw,42px);min-height:min(68svh,560px);display:flex;align-items:center}
   .lockup{display:flex;align-items:center;justify-content:center;gap:clamp(10px,1.6vw,18px);flex-wrap:nowrap}
-  .mark{width:clamp(56px,8.8vw,96px);height:auto;display:block;filter:drop-shadow(0 8px 20px var(--shadow))}
-  h1{font-size:clamp(30px,9vw,100px);font-weight:900;letter-spacing:-.04em;margin:0;line-height:1}
+  .mark{width:clamp(50px,7.9vw,86px);height:auto;display:block;filter:drop-shadow(0 8px 20px var(--shadow))}
+  h1{font-size:clamp(27px,8.1vw,90px);font-weight:900;letter-spacing:-.04em;margin:0;line-height:1}
   h1 .d{color:var(--duo)} h1 .disc{color:var(--brandgold)}
   .tagline{font-size:clamp(17px,2.2vw,22px);color:var(--grey);font-weight:500;margin:28px auto 0;max-width:560px;line-height:1.5;letter-spacing:-.01em}
   .tagline em{font-style:italic;color:var(--head);font-weight:700}
@@ -210,8 +210,13 @@
   pre{background:#0f1b27;color:#e9eef3;border:1px solid #1d2b38;border-radius:var(--radius);padding:20px clamp(16px,4vw,22px);overflow:auto;font-size:var(--t-small);
     font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;line-height:1.55;margin:0;tab-size:2;box-shadow:var(--rest)}
   [data-theme="dark"] pre{background:#0b141e;border-color:#33475a;box-shadow:inset 0 1px 0 rgba(255,255,255,.05)}
-  .chip.soon,.chip.soon:hover{cursor:default;opacity:.62;transform:none;box-shadow:none}
-  .soonbadge{font-size:10.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;background:var(--line);color:var(--grey);border-radius:999px;padding:2.5px 8px;margin-left:8px}
+  .chip.soon,.chip.soon:hover{cursor:default;opacity:.62;transform:none;box-shadow:none;position:relative}
+  .soonbadge{position:absolute;left:50%;bottom:calc(100% + 9px);transform:translateX(-50%) translateY(4px);white-space:nowrap;
+    font-size:10.5px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;background:var(--duo);color:var(--bg);
+    border-radius:999px;padding:5px 11px;box-shadow:0 6px 16px var(--shadow);opacity:0;pointer-events:none;
+    transition:opacity .18s ease,transform .18s ease}
+  .soonbadge::after{content:"";position:absolute;top:100%;left:50%;transform:translateX(-50%);border:5px solid transparent;border-top-color:var(--duo)}
+  .chip.soon:hover .soonbadge,.chip.soon:focus-visible .soonbadge{opacity:1;transform:translateX(-50%) translateY(0)}
   .bibwrap{position:relative}
   .copybtn{position:absolute;top:12px;right:12px;display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.07);color:#cfe0f2;border:1px solid #33475a;border-radius:9px;padding:6.5px 12px;font:600 12.5px/1 Inter,system-ui,sans-serif;cursor:pointer;transition:background .15s,border-color .15s}
   .copybtn:hover{background:rgba(255,255,255,.14);border-color:#4a6076}
@@ -253,7 +258,7 @@
     </div>
     <div class="btns reveal" style="transition-delay:.28s">
       <a class="chip" href="#top" title="arXiv preprint link coming soon"><svg class="ci" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h6"/></svg>Paper</a>
-      <span class="chip ghost soon">&lt;/&gt;&nbsp; Code<small class="soonbadge">soon</small></span>
+      <span class="chip ghost soon" tabindex="0">&lt;/&gt;&nbsp; Code<small class="soonbadge" role="tooltip">coming soon</small></span>
     </div>
   </div>
 </header>
