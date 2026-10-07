@@ -116,17 +116,18 @@
   .reveal{opacity:0;transform:translateY(16px);transition:opacity .55s cubic-bezier(.2,.7,.2,1),transform .55s cubic-bezier(.2,.7,.2,1)}
   .reveal.in{opacity:1;transform:none}
   /* staggered card entrance */
-  .steps .step,.grid .stat{opacity:0}
+  .steps .step,.grid .stat,.feat{opacity:0}
   @keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
-  .reveal.in .step,.reveal.in .stat{animation:rise .5s cubic-bezier(.2,.7,.2,1) forwards}
+  .reveal.in .step,.reveal.in .stat,.reveal.in .feat{animation:rise .5s cubic-bezier(.2,.7,.2,1) forwards}
   .reveal.in .step:nth-child(2),.reveal.in .stat:nth-child(2){animation-delay:.08s}
   .reveal.in .step:nth-child(3),.reveal.in .stat:nth-child(3){animation-delay:.16s}
   .reveal.in .stat:nth-child(4){animation-delay:.24s}
+  .reveal.in .feat{animation-delay:.32s}
   @media (prefers-reduced-motion:reduce){
     html{scroll-behavior:auto}
     .reveal{opacity:1;transform:none;transition:none}
     body::before,body::after{animation:none}.floaties{display:none}.lockup{animation:none}.step .rb{animation:none}.spot{display:none}
-    .steps .step,.grid .stat{opacity:1}.reveal.in .step,.reveal.in .stat{animation:none}
+    .steps .step,.grid .stat,.feat{opacity:1}.reveal.in .step,.reveal.in .stat,.reveal.in .feat{animation:none}
   }
 
   header{text-align:center;padding:clamp(44px,7vw,72px) 0 clamp(26px,4vw,42px);min-height:min(68svh,560px);display:flex;align-items:center}
@@ -170,7 +171,7 @@
   .step .n{font-size:11.5px;font-weight:800;color:var(--goldink);letter-spacing:.14em}
   .step .t{font-weight:800;color:var(--head);font-size:16.5px;margin-top:3px}
   .step .s{color:var(--grey);font-size:13px;margin-top:6px;line-height:1.5}
-  [data-theme="dark"] .step,[data-theme="dark"] .stat,[data-theme="dark"] .abstract{box-shadow:inset 0 1px 0 rgba(255,255,255,.055),0 10px 30px rgba(0,0,0,.55)}
+  [data-theme="dark"] .step,[data-theme="dark"] .stat,[data-theme="dark"] .feat,[data-theme="dark"] .abstract{box-shadow:inset 0 1px 0 rgba(255,255,255,.055),0 10px 30px rgba(0,0,0,.55)}
 
   .abstract{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:30px clamp(20px,5vw,36px);
     margin:0 auto;font-size:16px;color:var(--ink);box-shadow:var(--rest);transition:background .3s}
@@ -184,9 +185,18 @@
   .stat{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:26px 10px;text-align:center;
     box-shadow:var(--rest);transition:transform .18s cubic-bezier(.2,.7,.2,1),box-shadow .2s,background .3s}
   .stat:hover{transform:translateY(-3px);box-shadow:var(--hover)}
-  .stat .big{font-size:clamp(34px,7vw,46px);font-weight:900;color:var(--duo);line-height:1;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+  .stat .big,.feat .big{font-size:clamp(34px,7vw,46px);font-weight:900;color:var(--duo);line-height:1;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
   .stat .lab{font-size:12.5px;color:var(--grey);margin-top:10px;font-weight:600;line-height:1.45}
   .stat .lab .ln{display:block;white-space:nowrap}
+  .feat{margin-top:18px;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--rest);
+    padding:24px 28px;display:flex;align-items:center;gap:30px;text-align:left;transition:transform .18s cubic-bezier(.2,.7,.2,1),box-shadow .2s,background .3s}
+  .feat:hover{transform:translateY(-3px);box-shadow:var(--hover)}
+  .feat .fx{flex:0 0 auto;text-align:center;min-width:150px}
+  .feat .fx .cap{font-size:11px;color:var(--goldink);font-weight:800;letter-spacing:.1em;margin-top:7px;text-transform:uppercase;white-space:nowrap}
+  .feat .ft{font-weight:800;color:var(--head);font-size:16.5px}
+  .feat .fs{color:var(--grey);font-size:13.5px;line-height:1.6;margin-top:6px}
+  .feat .fs b{color:var(--head);font-weight:700}
+  @media(max-width:640px){.feat{flex-direction:column;text-align:center;gap:12px;padding:22px 16px}}
   .authors{text-align:center;font-size:16px;max-width:820px;margin:0 auto;color:var(--ink);line-height:1.7}
   .authors sup{color:var(--grey);font-weight:700}
   .authors .n{white-space:nowrap}
@@ -202,7 +212,7 @@
   @media(max-width:860px){.grid{grid-template-columns:repeat(2,1fr)}}
   @media(max-width:430px){.grid{grid-template-columns:1fr}}
 </style>
-<noscript><style>.reveal,.steps .step,.grid .stat{opacity:1!important;transform:none!important}</style></noscript>
+<noscript><style>.reveal,.steps .step,.grid .stat,.feat{opacity:1!important;transform:none!important}</style></noscript>
 </head>
 <body>
 <div class="spot" aria-hidden="true"></div>
@@ -279,6 +289,15 @@
       <div class="stat"><div class="big count" data-target="2" data-dec="0" data-suf="&times;">0&times;</div><div class="lab"><span class="ln">the expert speedup</span><span class="ln">on SWE-fficiency</span></div></div>
       <div class="stat"><div class="big count" data-target="1.92" data-dec="2" data-suf="&times;">0.00&times;</div><div class="lab"><span class="ln">on the vLLM</span><span class="ln">serving engine</span></div></div>
       <div class="stat"><div class="big count" data-target="83" data-dec="0" data-suf="%">0%</div><div class="lab"><span class="ln">fewer real tests</span><span class="ln">to match the baseline</span></div></div>
+    </div>
+    <div class="feat">
+      <div class="fx"><div class="big count" data-pre="+" data-target="6.3" data-dec="1" data-suf="%">+0.0%</div><div class="cap">CPU chip design &middot; DPC4</div></div>
+      <div>
+        <div class="ft">Out-designs the best human CPU prefetcher</div>
+        <div class="fs">+6.3% over a reference core that already runs the best published prefetchers, against <b>+3.5%</b> for the best human design and <b>+3.8%</b> for ArchAgent&nbsp;v2.
+        Single-core performance industry-wide improves about 3.5% a year, so this is <b>roughly two years of progress</b>, on a task where one evaluation takes up to 28 hours.
+        To our knowledge, the first autonomous system to beat the human best on multi-core workloads.</div>
+      </div>
     </div>
   </div>
 </section>
