@@ -183,17 +183,17 @@
   @media(max-width:520px){.abstract{text-align:left}}
   @media(max-width:600px){.affils{flex-wrap:nowrap;gap:8px}.affils img{height:auto;width:calc((100% - 16px)/3);max-width:150px} pre{white-space:pre-wrap;overflow-wrap:anywhere}}
   .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-  .stat{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:26px 14px 24px;text-align:center;
+  .stat{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:26px 14px 22px;text-align:center;
     box-shadow:var(--rest);transition:transform .18s cubic-bezier(.2,.7,.2,1),box-shadow .2s,background .3s}
   .stat:hover{transform:translateY(-3px);box-shadow:var(--hover)}
   .stat .big,.feat .big{font-size:clamp(34px,7vw,46px);font-weight:900;color:var(--duo);line-height:1;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
   .stat .lab{font-size:12.5px;color:var(--grey);margin-top:10px;font-weight:600;line-height:1.45}
   .stat .lab .ln{display:block;white-space:nowrap}
   .stat .cap{font-size:11px;color:var(--goldink);font-weight:800;letter-spacing:.1em;margin-top:10px;text-transform:uppercase}
-  .stat .ft{font-weight:800;color:var(--head);font-size:15.5px;margin-top:5px}
+  .stat .ft{font-weight:800;color:var(--head);font-size:16px;margin-top:12px}
   .stat .ft a,.stat .fs a{color:inherit;text-decoration:none;border-bottom:1.5px solid var(--line);transition:border-color .2s,color .2s}
   .stat .ft a:hover,.stat .fs a:hover{color:var(--duo);border-color:var(--duo)}
-  .stat .fs{color:var(--grey);font-size:12.5px;margin-top:6px;line-height:1.5}
+  .stat .fs{color:var(--grey);font-size:13px;margin-top:5px;white-space:nowrap}
   .stat .fs .ln{display:block;white-space:nowrap}
   .stat .fs b{color:var(--ink);font-weight:700}
   .authors{text-align:center;font-size:16px;max-width:820px;margin:0 auto;color:var(--ink);line-height:1.7}
@@ -285,24 +285,12 @@
   <div class="wrap reveal">
     <h2 id="h-high">Highlights</h2>
     <div class="grid">
-      <div class="stat"><div class="big">#1</div><div class="cap">GPU kernels</div>
-        <div class="ft">on NVIDIA's <a href="https://research.nvidia.com/benchmarks/sol-execbench" target="_blank" rel="noopener">SOL-ExecBench&nbsp;&#8599;</a></div>
-        <div class="fs"><span class="ln">first on <b>121</b> of 235 kernels</span><span class="ln">top-3 on <b>212</b> &middot; Sep 10, 2026</span></div></div>
-      <div class="stat"><div class="big count" data-target="15.02" data-dec="2" data-suf="&times;">0.00&times;</div><div class="cap">Python repositories</div>
-        <div class="ft">speedup on <a href="https://arxiv.org/abs/2511.06090" target="_blank" rel="noopener">SWE-fficiency&nbsp;&#8599;</a></div>
-        <div class="fs"><span class="ln">expert patches: <b>6.90&times;</b></span><span class="ln">100 real-repository tasks</span></div></div>
-      <div class="stat"><div class="big count" data-target="1.92" data-dec="2" data-suf="&times;">0.00&times;</div><div class="cap">LLM serving</div>
-        <div class="ft">gain on <a href="https://github.com/vllm-project/vllm" target="_blank" rel="noopener">vLLM&nbsp;&#8599;</a></div>
-        <div class="fs"><span class="ln">latency, power and throughput</span><span class="ln">Claude Code: <b>1.07&times;</b></span></div></div>
-      <div class="stat"><div class="big count" data-pre="+" data-target="6.3" data-dec="1" data-suf="%">+0.0%</div><div class="cap">CPU chip design</div>
-        <div class="ft">beats humans on <a href="https://sites.google.com/view/dpc4-2026/home" target="_blank" rel="noopener">DPC4&nbsp;&#8599;</a></div>
-        <div class="fs"><span class="ln">best human design: <b>+3.5%</b></span><span class="ln">single-core gains &asymp;3.5%/year</span></div></div>
-      <div class="stat"><div class="big count" data-target="1.44" data-dec="2" data-suf="&times;">0.00&times;</div><div class="cap">MoE inference</div>
-        <div class="ft">faster decode in <a href="https://github.com/FlashML-org/FreeToken" target="_blank" rel="noopener">FreeToken&nbsp;&#8599;</a></div>
-        <div class="fs"><span class="ln">Claude Code: <b>1.05&times;</b></span><span class="ln">upstream <a href="https://github.com/FlashML-org/FreeToken/pull/619" target="_blank" rel="noopener">PR #619&nbsp;&#8599;</a></span></div></div>
-      <div class="stat"><div class="big count" data-target="83" data-dec="0" data-suf="%">0%</div><div class="cap">Efficiency</div>
-        <div class="ft">fewer real evaluations</div>
-        <div class="fs"><span class="ln">to match Claude Code's score</span><span class="ln"><b>13</b> vs <b>76</b> on 50 GPU kernels</span></div></div>
+      <div class="stat"><div class="big">#1</div><div class="ft"><a href="https://research.nvidia.com/benchmarks/sol-execbench" target="_blank" rel="noopener">SOL-ExecBench&nbsp;&#8599;</a></div><div class="fs">121 of 235 kernels &middot; Sep 10, 2026</div></div>
+      <div class="stat"><div class="big count" data-target="15.02" data-dec="2" data-suf="&times;">0.00&times;</div><div class="ft"><a href="https://arxiv.org/abs/2511.06090" target="_blank" rel="noopener">SWE-fficiency&nbsp;&#8599;</a></div><div class="fs">experts: <b>6.90&times;</b></div></div>
+      <div class="stat"><div class="big count" data-target="1.92" data-dec="2" data-suf="&times;">0.00&times;</div><div class="ft"><a href="https://github.com/vllm-project/vllm" target="_blank" rel="noopener">vLLM serving&nbsp;&#8599;</a></div><div class="fs">Claude Code: <b>1.07&times;</b></div></div>
+      <div class="stat"><div class="big count" data-pre=" +"data-target="6.3" data-dec="1" data-suf="%">+0.0%</div><div class="ft"><a href="https://sites.google.com/view/dpc4-2026/home" target="_blank" rel="noopener">CPU design &middot; DPC4&nbsp;&#8599;</a></div><div class="fs">best human: <b>+3.5%</b></div></div>
+      <div class="stat"><div class="big count" data-target="1.44" data-dec="2" data-suf="&times;">0.00&times;</div><div class="ft"><a href="https://github.com/FlashML-org/FreeToken" target="_blank" rel="noopener">FreeToken MoE&nbsp;&#8599;</a></div><div class="fs">Claude Code: <b>1.05&times;</b> &middot; <a href="https://github.com/FlashML-org/FreeToken/pull/619" target="_blank" rel="noopener">PR #619&nbsp;&#8599;</a></div></div>
+      <div class="stat"><div class="big count" data-target="83" data-dec="0" data-suf="%">0%</div><div class="ft">fewer real evaluations</div><div class="fs"><b>13</b> vs <b>76</b> for Claude Code</div></div>
     </div>
   </div>
 </section>
