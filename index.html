@@ -140,7 +140,13 @@
   .tagline em{font-style:italic;color:var(--head);font-weight:700}
 
   .affils{display:flex;gap:clamp(12px,2.2vw,22px);justify-content:center;align-items:center;flex-wrap:wrap;margin:38px 0 4px}
-  .affils img{height:clamp(54px,7.4vw,74px);width:auto;display:block;filter:drop-shadow(0 4px 12px var(--shadow))}
+  .affils img{height:clamp(54px,7.4vw,74px);width:auto;display:block;filter:drop-shadow(0 4px 12px var(--shadow));transition:filter .2s}
+  .affils a{position:relative;display:block;line-height:0;border-radius:16px;transition:transform .18s cubic-bezier(.2,.7,.2,1)}
+  .affils a:hover{transform:translateY(-3px)}
+  .affils a:hover img{filter:drop-shadow(0 10px 22px var(--shadow))}
+  .affils a:focus-visible{outline:2.5px solid var(--accent);outline-offset:4px}
+  .affils .lk{position:absolute;top:7px;right:9px;width:13px;height:13px;stroke:#003262;stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round;opacity:0;transition:opacity .18s}
+  .affils a:hover .lk,.affils a:focus-visible .lk{opacity:.55}
   /* dark mode: keep affiliation logos in their real brand colours on a soft light plate */
 
   .btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin:34px 0 4px}
@@ -181,7 +187,7 @@
   .abstract{text-align:justify;text-justify:inter-word;hyphens:manual}
   .nw{white-space:nowrap}
   @media(max-width:520px){.abstract{text-align:left}}
-  @media(max-width:600px){.affils{flex-wrap:nowrap;gap:8px}.affils img{height:auto;width:calc((100% - 16px)/3);max-width:150px} pre{white-space:pre-wrap;overflow-wrap:anywhere}}
+  @media(max-width:600px){.affils{flex-wrap:nowrap;gap:8px}.affils a{width:calc((100% - 16px)/3);max-width:150px}.affils img{height:auto;width:100%} pre{white-space:pre-wrap;overflow-wrap:anywhere}}
   .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
   .stat{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:26px 18px 24px;text-align:center;
     box-shadow:var(--rest);transition:background .3s}
@@ -240,9 +246,9 @@
     </div>
     <p class="tagline reveal" style="transition-delay:.12s">Code optimization by jointly discovering<br/><em class="nw">what to optimize</em> and <em class="nw">how to evaluate</em>.</p>
     <div class="affils reveal" style="transition-delay:.2s">
-      <img src="assets/tile_google.png" alt="Google"/>
-      <img src="assets/tile_berkeley.png" alt="UC Berkeley"/>
-      <img src="assets/tile_stanford.png" alt="Stanford University"/>
+      <a href="https://research.google/teams/cloud-ai/" target="_blank" rel="noopener" title="Google &middot; Cloud AI Research" aria-label="Google Cloud AI Research (opens in a new tab)"><img src="assets/tile_google.png" alt="Google"/><svg class="lk" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+      <a href="https://sky.cs.berkeley.edu/" target="_blank" rel="noopener" title="UC Berkeley &middot; Sky Computing Lab" aria-label="UC Berkeley Sky Computing Lab (opens in a new tab)"><img src="assets/tile_berkeley.png" alt="UC Berkeley"/><svg class="lk" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+      <a href="https://cs.stanford.edu/" target="_blank" rel="noopener" title="Stanford &middot; Computer Science" aria-label="Stanford Computer Science (opens in a new tab)"><img src="assets/tile_stanford.png" alt="Stanford University"/><svg class="lk" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
     </div>
     <div class="btns reveal" style="transition-delay:.28s">
       <a class="chip" href="#top" title="arXiv preprint link coming soon">&#128196;&nbsp; Paper</a>
