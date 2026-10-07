@@ -127,23 +127,21 @@
   @media (prefers-reduced-motion:reduce){
     html{scroll-behavior:auto}
     .reveal{opacity:1;transform:none;transition:none}
-    body::before,body::after{animation:none}.floaties{display:none}.lockup{animation:none}.step .rb{animation:none}.spot{display:none}
+    body::before,body::after{animation:none}.floaties{display:none}.step .rb{animation:none}.spot{display:none}
     .steps .step,.grid .stat,.feat{opacity:1}.reveal.in .step,.reveal.in .stat,.reveal.in .feat{animation:none}
   }
 
   header{text-align:center;padding:clamp(44px,7vw,72px) 0 clamp(26px,4vw,42px);min-height:min(68svh,560px);display:flex;align-items:center}
-  .lockup{display:flex;align-items:center;justify-content:center;gap:clamp(10px,1.6vw,18px);flex-wrap:nowrap;animation:float 7s ease-in-out infinite}
+  .lockup{display:flex;align-items:center;justify-content:center;gap:clamp(10px,1.6vw,18px);flex-wrap:nowrap}
   .mark{width:clamp(56px,8.8vw,96px);height:auto;display:block;filter:drop-shadow(0 8px 20px var(--shadow))}
-  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
   h1{font-size:clamp(30px,9vw,100px);font-weight:900;letter-spacing:-.04em;margin:0;line-height:1}
   h1 .d{color:var(--duo)} h1 .disc{color:var(--brandgold)}
   .tagline{font-size:clamp(17px,2.2vw,22px);color:var(--grey);font-weight:500;margin:28px auto 0;max-width:560px;line-height:1.5;letter-spacing:-.01em}
   .tagline em{font-style:italic;color:var(--head);font-weight:700}
 
   .affils{display:flex;gap:clamp(12px,2.2vw,22px);justify-content:center;align-items:center;flex-wrap:wrap;margin:38px 0 4px}
-  .affils img{height:clamp(54px,7.4vw,74px);width:auto;display:block;filter:drop-shadow(0 4px 12px var(--shadow));transition:transform .2s}
+  .affils img{height:clamp(54px,7.4vw,74px);width:auto;display:block;filter:drop-shadow(0 4px 12px var(--shadow))}
   /* dark mode: keep affiliation logos in their real brand colours on a soft light plate */
-  .affils img:hover{opacity:1;transform:scale(1.04)}
 
   .btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin:34px 0 4px}
   .chip{display:inline-flex;align-items:center;padding:14px 32px;border-radius:999px;font-weight:700;font-size:16px;
@@ -163,8 +161,7 @@
 
   /* how it works */
   .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:24px}
-  .step{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:26px 18px 24px;text-align:center;box-shadow:var(--rest);transition:transform .18s cubic-bezier(.2,.7,.2,1),box-shadow .2s,background .3s}
-  .step:hover{transform:translateY(-3px);box-shadow:var(--hover)}
+  .step{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:26px 18px 24px;text-align:center;box-shadow:var(--rest);transition:background .3s}
   .step .rb{height:62px;width:auto;margin:0 auto 12px;display:block;filter:drop-shadow(0 6px 12px var(--shadow));animation:bob 4.6s ease-in-out infinite}
   @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
   .steps .step:nth-child(1) .rb{animation-delay:-.3s}
@@ -187,8 +184,7 @@
   @media(max-width:600px){.affils{flex-wrap:nowrap;gap:8px}.affils img{height:auto;width:calc((100% - 16px)/3);max-width:150px} pre{white-space:pre-wrap;overflow-wrap:anywhere}}
   .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
   .stat{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:26px 18px 24px;text-align:center;
-    box-shadow:var(--rest);transition:transform .18s cubic-bezier(.2,.7,.2,1),box-shadow .2s,background .3s}
-  .stat:hover{transform:translateY(-3px);box-shadow:var(--hover)}
+    box-shadow:var(--rest);transition:background .3s}
   .stat .big{font-size:var(--t-num);font-weight:800;color:var(--duo);line-height:1;letter-spacing:-.025em;font-variant-numeric:tabular-nums}
   .stat .lab{font-size:12.5px;color:var(--grey);margin-top:10px;font-weight:600;line-height:1.45}
   .stat .lab .ln{display:block;white-space:nowrap}
@@ -208,6 +204,13 @@
   pre{background:#0f1b27;color:#e9eef3;border:1px solid #1d2b38;border-radius:var(--radius);padding:20px clamp(16px,4vw,22px);overflow:auto;font-size:var(--t-small);
     font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;line-height:1.55;margin:0;tab-size:2;box-shadow:var(--rest)}
   [data-theme="dark"] pre{background:#0b141e;border-color:#33475a;box-shadow:inset 0 1px 0 rgba(255,255,255,.05)}
+  .chip.soon,.chip.soon:hover{cursor:default;opacity:.62;transform:none;box-shadow:none}
+  .soonbadge{font-size:10.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;background:var(--line);color:var(--grey);border-radius:999px;padding:2.5px 8px;margin-left:8px}
+  .bibwrap{position:relative}
+  .copybtn{position:absolute;top:12px;right:12px;display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.07);color:#cfe0f2;border:1px solid #33475a;border-radius:9px;padding:6.5px 12px;font:600 12.5px/1 Inter,system-ui,sans-serif;cursor:pointer;transition:background .15s,border-color .15s}
+  .copybtn:hover{background:rgba(255,255,255,.14);border-color:#4a6076}
+  .copybtn svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  .copybtn.ok{color:#7fd6a4;border-color:#3f6b54}
   .divider{height:1px;background:linear-gradient(90deg,transparent,var(--line) 20%,var(--line) 80%,transparent);max-width:calc(var(--maxw) - 44px);margin:0 auto}
   footer{text-align:center;color:var(--grey);font-size:var(--t-small);padding:clamp(32px,5vw,50px) 0 clamp(38px,6vw,58px)}
   footer .dd{font-weight:800;color:var(--head)}
@@ -229,7 +232,7 @@
 </div>
 <button class="toggle" id="themeBtn" aria-label="Switch to dark mode" aria-pressed="false">🌙</button>
 
-<header>
+<header id="top">
   <div class="wrap">
     <div class="lockup reveal">
       <img class="mark mark-l" src="assets/logo.png" alt=""/><img class="mark mark-d" src="assets/logo_dark.png" alt=""/>
@@ -242,8 +245,8 @@
       <img src="assets/tile_stanford.png" alt="Stanford University"/>
     </div>
     <div class="btns reveal" style="transition-delay:.28s">
-      <a class="chip" href="#">&#128196;&nbsp; Paper</a>
-      <a class="chip ghost" href="#">&lt;/&gt;&nbsp; Code</a>
+      <a class="chip" href="#top" title="arXiv preprint link coming soon">&#128196;&nbsp; Paper</a>
+      <span class="chip ghost soon">&lt;/&gt;&nbsp; Code<small class="soonbadge">soon</small></span>
     </div>
   </div>
 </header>
@@ -327,12 +330,15 @@
 <section aria-labelledby="h-bib">
   <div class="wrap reveal">
     <h2 id="h-bib">BibTeX</h2>
-    <pre>@article{duodiscover,
+    <div class="bibwrap">
+    <button class="copybtn" id="copyBib" aria-label="Copy BibTeX to clipboard"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span>Copy</span></button>
+    <pre id="bib">@article{duodiscover,
   title   = {DuoDiscover: Code Optimization by Jointly Discovering What to Optimize and How to Evaluate},
   author  = {Agarwal, Shubham and Gupta, Akshat and Heddes, Mike and Soylu, Dilara and others},
   year    = {2026},
   note    = {Google, UC Berkeley, Stanford University}
 }</pre>
+    </div>
   </div>
 </section>
 </main>
@@ -368,6 +374,13 @@
 
   // reduced motion: do not autoplay the video
   if(rm){const v=document.querySelector('video');if(v){v.removeAttribute('autoplay');try{v.pause();}catch(e){}}}
+
+  // BibTeX copy button (clipboard API + fallback, brief "Copied" feedback)
+  const cb=document.getElementById('copyBib');
+  if(cb){cb.addEventListener('click',async()=>{const t=document.getElementById('bib').innerText;
+    try{await navigator.clipboard.writeText(t);}catch(e){const ta=document.createElement('textarea');ta.value=t;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove();}
+    cb.classList.add('ok');cb.querySelector('span').textContent='Copied';
+    setTimeout(()=>{cb.classList.remove('ok');cb.querySelector('span').textContent='Copy';},1600);});}
 
   // cursor-follow glow (desktop pointer only, off for reduced-motion)
   const spot=document.querySelector('.spot');
