@@ -22,7 +22,7 @@
     --duo:#003262; --head:#003262; --accent:#003262; --accentink:#ffffff;
     --shadow:rgba(0,50,98,.14);
     --grid:rgba(0,50,98,.020); --gridb:rgba(0,50,98,.034); --float:rgba(0,50,98,.11); --floatg:rgba(194,120,3,.12); --spot:rgba(194,120,3,.13);
-    --au1:rgba(194,120,3,.15); --au2:rgba(0,50,98,.13); --au3:rgba(0,50,98,.11);
+    --au1:rgba(194,120,3,.15); --au2:rgba(0,50,98,.13); --au3:rgba(0,50,98,.11); --nv:#4F7A00;
     --radius:16px; --rest:0 1px 2px var(--shadow),0 6px 20px var(--shadow); --hover:0 16px 34px var(--shadow);
     --maxw:900px;
   }
@@ -31,7 +31,7 @@
     --duo:#dbe7f3; --head:#cfe0f2; --accent:#2f6fb0; --accentink:#ffffff;
     --shadow:rgba(0,0,0,.5);
     --grid:rgba(130,170,210,.045); --gridb:rgba(130,170,210,.07); --float:rgba(120,165,215,.14); --floatg:rgba(240,166,58,.15); --spot:rgba(110,165,225,.17);
-    --au1:rgba(194,120,3,.12); --au2:rgba(70,130,200,.18); --au3:rgba(70,130,200,.12);
+    --au1:rgba(194,120,3,.12); --au2:rgba(70,130,200,.18); --au3:rgba(70,130,200,.12); --nv:#76B900;
     --goldink:#f0a63a; --brandgold:#E9A23B;
   }
   *{box-sizing:border-box}
@@ -188,7 +188,7 @@
   .nw{white-space:nowrap}
   @media(max-width:520px){.abstract{text-align:left}}
   @media(max-width:600px){.affils{flex-wrap:nowrap;gap:8px}.affils a{width:calc((100% - 16px)/3);max-width:150px}.affils img{height:auto;width:100%} pre{white-space:pre-wrap;overflow-wrap:anywhere}}
-  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
   .stat{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:26px 18px 24px;text-align:center;
     box-shadow:var(--rest);transition:background .3s}
   .stat .big{font-size:var(--t-num);font-weight:800;color:var(--duo);line-height:1;letter-spacing:-.025em;font-variant-numeric:tabular-nums}
@@ -196,10 +196,26 @@
   .stat .lab .ln{display:block;white-space:nowrap}
   .stat .cap{font-size:11px;color:var(--goldink);font-weight:800;letter-spacing:.1em;margin-top:10px;text-transform:uppercase}
   .stat .ft{margin-top:14px}
+  .stat .fs{white-space:normal;overflow-wrap:break-word}
+  .stat .fs a{border-bottom-color:currentColor}
+  [data-theme="dark"] :focus-visible{outline-color:var(--head)}
+  .gridnote{text-align:center;font-size:11.5px;color:var(--grey);margin:16px 0 0;letter-spacing:.01em}
+  .tlogo{height:54px;display:flex;align-items:center;justify-content:center;margin:0 0 14px}
+  .tlogo .pl{height:54px;min-width:54px;padding:0 14px;border-radius:16px;display:flex;align-items:center;justify-content:center;gap:0;
+    background:rgba(0,50,98,.055);border:1px solid rgba(0,50,98,.10);box-sizing:border-box}
+  [data-theme="dark"] .tlogo .pl{background:rgba(191,214,234,.07);border-color:rgba(191,214,234,.15)}
+  .tlogo img{max-height:30px;max-width:150px;display:block}
+  .tlogo img.ftk{max-height:18px}
+  .tlogo .tic{color:#113a66;display:block}
+  [data-theme="dark"] .tlogo .tic{color:#cfe0f2}
+  .nv{color:var(--nv);font-weight:800}
+  .nvic{stroke:var(--nv);color:var(--nv)}
+  .tlogo .tl-l{display:block}.tlogo .tl-d{display:none}
+  [data-theme="dark"] .tlogo .tl-l{display:none}[data-theme="dark"] .tlogo .tl-d{display:block}
   .stat .ft a,.stat .fs a{color:inherit;text-decoration:none;border-bottom:1.5px solid var(--line);transition:border-color .2s,color .2s}
   .stat .ft a:hover,.stat .fs a:hover{color:var(--duo);border-color:var(--duo)}
-  .stat .fs{margin-top:4px;white-space:nowrap}
-  .stat .fs .ln{display:block;white-space:nowrap}
+  .stat .fs{margin-top:4px}
+  .stat .fs .ln{display:block}
   .stat .fs b{color:var(--ink);font-weight:700}
   .authors{text-align:center;font-size:var(--t-body);max-width:800px;margin:0 auto;color:var(--grey);line-height:2;text-wrap:balance}
   .authors .n{white-space:nowrap;color:var(--ink)}
@@ -228,7 +244,7 @@
   footer .dd{font-weight:800;color:var(--head)}
   /* clean grid reflow (avoid orphan 2+1 / 3+1) */
   @media(max-width:759px){.steps{grid-template-columns:1fr}}
-  @media(max-width:940px){.grid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:940px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
   @media(max-width:600px){.grid{grid-template-columns:1fr}}
   @media(max-width:430px){.grid{grid-template-columns:1fr}}
 </style>
@@ -276,7 +292,7 @@
     <div class="steps">
       <div class="step"><img class="rb" src="assets/robot1.png" alt=""/><div class="n">STEP 1</div><div class="t">Find a target</div><div class="s">the part of the codebase worth optimizing</div></div>
       <div class="step"><img class="rb" src="assets/robot2.png" alt=""/><div class="n">STEP 2</div><div class="t">Build a fast yardstick</div><div class="s">a proxy that scores an edit in seconds</div></div>
-      <div class="step"><img class="rb" src="assets/robot3.png" alt=""/><div class="n">STEP 3</div><div class="t">Verify on the real test</div><div class="s">a fidelity test accepts a gain only if the real evaluation agrees</div></div>
+      <div class="step"><img class="rb" src="assets/robot3.png" alt=""/><div class="n">STEP 3</div><div class="t">Verify on the real test</div><div class="s">a gain counts only when the real evaluation agrees</div></div>
     </div>
   </div>
 </section>
@@ -305,13 +321,14 @@
   <div class="wrap reveal">
     <h2 id="h-high">Highlights</h2>
     <div class="grid">
-      <div class="stat"><div class="big">#1</div><div class="ft"><a href="https://research.nvidia.com/benchmarks/sol-execbench" target="_blank" rel="noopener">SOL-ExecBench&nbsp;&#8599;</a></div><div class="fs">121 of 235 kernels &middot; Sep 10, 2026</div></div>
-      <div class="stat"><div class="big count" data-target="15.02" data-dec="2" data-suf="&times;">0.00&times;</div><div class="ft"><a href="https://arxiv.org/abs/2511.06090" target="_blank" rel="noopener">SWE-fficiency&nbsp;&#8599;</a></div><div class="fs">experts: <b>6.90&times;</b></div></div>
-      <div class="stat"><div class="big count" data-target="1.92" data-dec="2" data-suf="&times;">0.00&times;</div><div class="ft"><a href="https://github.com/vllm-project/vllm" target="_blank" rel="noopener">vLLM serving&nbsp;&#8599;</a></div><div class="fs">Claude Code: <b>1.07&times;</b></div></div>
-      <div class="stat"><div class="big count" data-pre=" +"data-target="6.3" data-dec="1" data-suf="%">+0.0%</div><div class="ft"><a href="https://sites.google.com/view/dpc4-2026/home" target="_blank" rel="noopener">CPU design &middot; DPC4&nbsp;&#8599;</a></div><div class="fs">best human: <b>+3.5%</b></div></div>
-      <div class="stat"><div class="big count" data-target="1.44" data-dec="2" data-suf="&times;">0.00&times;</div><div class="ft"><a href="https://github.com/FlashML-org/FreeToken" target="_blank" rel="noopener">FreeToken MoE&nbsp;&#8599;</a></div><div class="fs">Claude Code: <b>1.05&times;</b> &middot; <a href="https://github.com/FlashML-org/FreeToken/pull/619" target="_blank" rel="noopener">merged upstream&nbsp;&#8599;</a></div></div>
-      <div class="stat"><div class="big count" data-target="83" data-dec="0" data-suf="%">0%</div><div class="ft">fewer real evaluations</div><div class="fs"><b>13</b> vs <b>76</b> for Claude Code</div></div>
+      <div class="stat"><div class="tlogo"><span class="pl"><svg class="nvic" width="42" height="30" viewBox="0 0 40 28" fill="none" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="36" height="18" rx="4"/><circle cx="14" cy="13" r="5.6"/><circle cx="14" cy="13" r="1.6" fill="currentColor" stroke="none"/><path d="M25 9.5h8M25 13h8M25 16.5h5"/><path d="M10 22v3M20 22v3M30 22v3"/></svg></span></div><div class="big">#1</div><div class="ft"><a href="https://research.nvidia.com/benchmarks/sol-execbench" target="_blank" rel="noopener">SOL-ExecBench&nbsp;&#8599;</a></div><div class="fs"><span class="nv">NVIDIA</span>&#8217;s B200 leaderboard<br/><b>121</b> of 235 kernels*</div></div>
+      <div class="stat"><div class="tlogo"><span class="pl"><img class="tl-l" src="assets/task_swe.png" alt=""/><img class="tl-d" src="assets/task_swe_d.png" alt=""/></span></div><div class="big count" data-target="15.02" data-dec="2" data-suf="&times;">0.00&times;</div><div class="ft"><a href="https://arxiv.org/abs/2511.06090" target="_blank" rel="noopener">SWE-fficiency&nbsp;&#8599;</a></div><div class="fs">speedup on real repos<br/>human experts: <b>6.90&times;</b></div></div>
+      <div class="stat"><div class="tlogo"><span class="pl"><img class="tl-l" src="assets/task_vllm_l.png" alt=""/><img class="tl-d" src="assets/task_vllm_d.png" alt=""/></span></div><div class="big count" data-target="1.92" data-dec="2" data-suf="&times;">0.00&times;</div><div class="ft"><a href="https://github.com/vllm-project/vllm" target="_blank" rel="noopener">vLLM serving&nbsp;&#8599;</a></div><div class="fs">~85&thinsp;min per real eval<br/>Claude Code: <b>1.07&times;</b></div></div>
+      <div class="stat"><div class="tlogo"><span class="pl"><svg class="tic" width="38" height="30" viewBox="0 0 36 30" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><rect x="5.5" y="7" width="25" height="16" rx="3"/><rect x="14" y="11.5" width="8" height="7" rx="1.6" fill="#C27803" stroke="none"/><path d="M10.5 7V3M15.5 7V3M20.5 7V3M25.5 7V3M10.5 27v-4M15.5 27v-4M20.5 27v-4M25.5 27v-4M5.5 11H2M5.5 19H2M30.5 11H34M30.5 19H34"/></svg></span></div><div class="big count" data-pre="+" data-target="6.3" data-dec="1" data-suf="%">+0.0%</div><div class="ft"><a href="https://sites.google.com/view/dpc4-2026/home" target="_blank" rel="noopener">CPU prefetcher &middot; DPC4&nbsp;&#8599;</a></div><div class="fs">up to 28&thinsp;h per real eval<br/>best human design: <b>+3.5%</b></div></div>
+      <div class="stat"><div class="tlogo"><span class="pl"><img class="ftk tl-l" src="assets/task_freetoken_l.svg" alt=""/><img class="ftk tl-d" src="assets/task_freetoken_d.svg" alt=""/></span></div><div class="big count" data-target="1.44" data-dec="2" data-suf="&times;">0.00&times;</div><div class="ft"><a href="https://github.com/FlashML-org/FreeToken" target="_blank" rel="noopener">FreeToken &middot; MoE decode&nbsp;&#8599;</a></div><div class="fs">Claude Code: <b>1.05&times;</b><br/><a href="https://github.com/FlashML-org/FreeToken/pull/619" target="_blank" rel="noopener">merged upstream&nbsp;&#8599;</a></div></div>
+      <div class="stat"><div class="tlogo"><span class="pl"><svg class="tic" width="30" height="32" viewBox="0 0 30 32" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="15" cy="18.5" r="10.5"/><path d="M12 2.5h6M15 2.5v4.5"/><path d="M23.3 9.3l2.2-2.2"/><path d="M15 18.5l5-5.5" stroke="#C27803" stroke-width="2.8"/><circle cx="15" cy="18.5" r="1.8" fill="#C27803" stroke="none"/></svg></span></div><div class="big count" data-target="2.9" data-dec="1" data-suf="&times;">0.0&times;</div><div class="ft">faster than Claude Code</div><div class="fs">same score &middot; <b>2.8&thinsp;h</b> vs 8&thinsp;h<br/><b>13</b> vs 76 evals &middot; <b>$80</b> vs $309</div></div>
     </div>
+    <p class="gridnote">*&nbsp;Leaderboard standings as of Sep&nbsp;10,&nbsp;2026.</p>
   </div>
 </section>
 
@@ -356,7 +373,7 @@
 </main>
 
 <footer>
-  <div class="wrap"><span class="dd">DuoDiscover</span> &middot; Google &middot; UC Berkeley &middot; Stanford</div>
+  <div class="wrap"><span class="dd">DuoDiscover</span> &middot; Google &middot; UC Berkeley &middot; Stanford University</div>
 </footer>
 
 <script>
