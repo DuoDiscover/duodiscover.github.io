@@ -9,17 +9,18 @@
 <meta property="og:type" content="website"/>
 <meta property="og:title" content="DuoDiscover: Scaling Autonomous Discovery Beyond the Evaluation Bottleneck"/>
 <meta property="og:description" content="Code optimization when the real benchmark is the bottleneck: each agent co-discovers a target and a cheap yardstick, and a fidelity test accepts a gain only when the true evaluation agrees."/>
-<meta property="og:image" content="assets/poster.png"/>
+<meta property="og:image" content="https://duodiscover.github.io/assets/poster.png"/>
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="assets/poster.png"/>
+<link rel="canonical" href="https://duodiscover.github.io/"/>
+<meta name="twitter:image" content="https://duodiscover.github.io/assets/poster.png"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"/>
 <style>
   :root{
     --goldink:#9A6000; --brandgold:#C27803; --cardinal:#8C1515;
     --bg:#F9F8F5; --card:#ffffff; --line:#E7E4DF; --ink:#263238; --grey:#5b6670;
-    --duo:#0B3D91;--papername:#0B3D91; --head:#0B3D91; --accent:#0B3D91; --accentink:#ffffff;
+    --duo:#0B3D91;--papername:#0B3D91; --mono:'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,monospace; --head:#0B3D91; --accent:#0B3D91; --accentink:#ffffff;
     --shadow:rgba(11,61,145,.14);
     --grid:rgba(11,61,145,0); --gridb:rgba(11,61,145,0); --float:rgba(11,61,145,.11); --floatg:rgba(194,120,3,.12); --flr:rgba(168,48,38,.18); --fly:rgba(181,135,3,.19); --flb:rgba(48,96,176,.18); --flgr:rgba(37,121,59,.18); --spot:rgba(194,120,3,.13);
     --au1:rgba(194,120,3,0); --au2:rgba(11,61,145,0); --au3:rgba(11,61,145,0); --nv:#4F7A00;
@@ -38,7 +39,7 @@
   html{scroll-behavior:smooth}
   html,body{overflow-x:hidden}
   body{
-    margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+    margin:0;font-family:'IBM Plex Sans',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
     color:var(--ink);line-height:1.65;-webkit-font-smoothing:antialiased;position:relative;
     background-color:var(--bg);
     background-image:
@@ -145,7 +146,7 @@
   header{text-align:center;padding:clamp(44px,7vw,72px) 0 clamp(26px,4vw,42px);min-height:min(68svh,560px);display:flex;align-items:center}
   .lockup{display:flex;align-items:center;justify-content:center;gap:clamp(10px,1.6vw,18px);flex-wrap:nowrap}
   .mark{width:clamp(50px,7.9vw,86px);height:auto;display:block;filter:drop-shadow(0 8px 20px var(--shadow))}
-  h1{font-size:clamp(27px,8.1vw,90px);font-weight:900;letter-spacing:-.04em;margin:0;line-height:1}
+  h1{font-size:clamp(27px,8.1vw,90px);font-weight:700;letter-spacing:-.04em;margin:0;line-height:1}
   h1 .d{color:var(--papername)} h1 .disc{color:var(--papername)}
   .tagline{font-size:clamp(17px,2.2vw,22px);color:var(--grey);font-weight:500;margin:28px auto 0;max-width:560px;line-height:1.5;letter-spacing:-.01em}
   .tagline em{font-style:italic;color:var(--head);font-weight:700}
@@ -173,7 +174,7 @@
   main>section:first-child{padding-top:clamp(10px,1.6vw,20px)}        /* pull the video up under the hero */
   main>section+section{padding-top:clamp(20px,2.6vw,32px)}            /* tighter within-group so dividers read as real breaks */
   :root{--t-label:13px;--t-tag:11px;--t-title:16px;--t-sub:13.5px;--t-body:16.5px;--t-small:13px;--t-num:clamp(36px,6.4vw,44px)}
-  h2{font-size:var(--t-label);letter-spacing:.2em;text-transform:uppercase;color:var(--head);font-weight:800;text-align:center;margin:0 0 18px}
+  h2{font-size:var(--t-label);letter-spacing:.2em;text-transform:uppercase;color:var(--head);font-weight:700;text-align:center;margin:0 0 18px}
   .video video{width:100%;border-radius:var(--radius);display:block;background:#000;box-shadow:0 8px 28px var(--shadow),0 0 0 1px var(--line)}
 
   /* how it works */
@@ -184,7 +185,7 @@
   .steps .step:nth-child(1) .rb{animation-delay:-.3s}
   .steps .step:nth-child(2) .rb{animation-delay:-1.8s}
   .steps .step:nth-child(3) .rb{animation-delay:-3.1s}
-  .step .n{font-size:var(--t-tag);font-weight:800;color:var(--goldink);letter-spacing:.16em}
+  .step .n{font-size:var(--t-tag);font-weight:700;color:var(--goldink);letter-spacing:.16em}
   .step .t,.stat .ft{font-weight:700;color:var(--head);font-size:var(--t-title);line-height:1.4;letter-spacing:-.005em}
   .step .t{margin-top:6px}
   .step .s,.stat .fs{color:var(--grey);font-size:var(--t-sub);line-height:1.55}
@@ -207,10 +208,10 @@
   .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
   .stat{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:26px 18px 24px;text-align:center;
     box-shadow:var(--rest);transition:background .3s}
-  .stat .big{font-size:var(--t-num);font-weight:800;color:var(--duo);line-height:1;letter-spacing:-.025em;font-variant-numeric:tabular-nums}
+  .stat .big{font-size:var(--t-num);font-weight:700;color:var(--duo);line-height:1;letter-spacing:-.025em;font-variant-numeric:tabular-nums}
   .stat .lab{font-size:12.5px;color:var(--grey);margin-top:10px;font-weight:600;line-height:1.45}
   .stat .lab .ln{display:block;white-space:nowrap}
-  .stat .cap{font-size:11px;color:var(--goldink);font-weight:800;letter-spacing:.1em;margin-top:10px;text-transform:uppercase}
+  .stat .cap{font-size:11px;color:var(--goldink);font-weight:700;letter-spacing:.1em;margin-top:10px;text-transform:uppercase}
   .stat .ft{margin-top:14px}
   .stat .fs{white-space:normal;overflow-wrap:break-word}
   .stat .fs a{border-bottom-color:currentColor}
@@ -224,7 +225,7 @@
   .tlogo img.ftk{max-height:18px}
   .tlogo .tic{color:#0B3D91;display:block}
   [data-theme="dark"] .tlogo .tic{color:#CFDCF2}
-  .nv{color:var(--nv);font-weight:800}
+  .nv{color:var(--nv);font-weight:700}
   .nvic{stroke:var(--nv);color:var(--nv)}
   .tlogo .tl-l{display:block}.tlogo .tl-d{display:none}
   [data-theme="dark"] .tlogo .tl-l{display:none}[data-theme="dark"] .tlogo .tl-d{display:block}
@@ -239,15 +240,20 @@
   .authors .aff-b{color:var(--brandgold)}
   .authors .aff-s{color:var(--cardinal)}
   [data-theme="dark"] .authors .aff-s{color:#D2524C}
+  .authors .eqs{color:var(--brandgold);font-size:1.15em}
+  .authors .cld{color:var(--papername);font-size:1.3em}
   .authors .tier-first{margin-bottom:.5em}
   .authors .tier-last{margin-top:.5em}
-  .authors .tier-mid .n{color:color-mix(in srgb, var(--ink) 62%, var(--grey))}
+  .authors .tier-mid .n{color:color-mix(in srgb, var(--ink) 55%, var(--grey))}
   .authors sup{font-size:.6em;font-weight:500;color:var(--grey);line-height:0;vertical-align:.75em;margin-left:1.5px;letter-spacing:.02em}
+  .eq,.stat .fs{font-family:var(--mono)}
+  .step .n{font-family:var(--mono);font-weight:500}
+  .stat .big{font-family:var(--mono);font-weight:500}
   .eq{color:var(--grey);font-size:var(--t-small);line-height:1.6;margin-top:16px}
   .eq+.eq{margin-top:2px}
   .eq sup{font-size:.72em;line-height:0;vertical-align:.6em;margin-right:1px}
   pre{background:#0f1b27;color:#e9eef3;border:1px solid #1d2b38;border-radius:var(--radius);padding:20px clamp(16px,4vw,22px);overflow:auto;font-size:var(--t-small);
-    font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;line-height:1.55;margin:0;tab-size:2;box-shadow:var(--rest)}
+    font-family:var(--mono);line-height:1.55;margin:0;tab-size:2;box-shadow:var(--rest)}
   [data-theme="dark"] pre{background:#0b141e;border-color:#33475a;box-shadow:inset 0 1px 0 rgba(255,255,255,.05)}
   .bibwrap{position:relative}
   .copybtn{position:absolute;top:12px;right:12px;display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.07);color:#CFDCF2;border:1px solid #33475a;border-radius:9px;padding:6.5px 12px;font:600 12.5px/1 Inter,system-ui,sans-serif;cursor:pointer;transition:background .15s,border-color .15s}
@@ -257,7 +263,7 @@
   .chip .ci{width:15px;height:15px;margin-right:8px;stroke:currentColor;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round;flex:none}
   .divider{height:1px;background:linear-gradient(90deg,transparent,var(--line) 20%,var(--line) 80%,transparent);max-width:calc(var(--maxw) - 44px);margin:0 auto}
   footer{text-align:center;color:var(--grey);font-size:var(--t-small);padding:clamp(32px,5vw,50px) 0 clamp(38px,6vw,58px)}
-  footer .dd{font-weight:800;color:var(--head)}
+  footer .dd{font-weight:700;color:var(--head)}
   /* clean grid reflow (avoid orphan 2+1 / 3+1) */
   @media(max-width:759px){.steps{grid-template-columns:1fr}}
   @media(max-width:940px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
@@ -307,11 +313,11 @@
 
 <section aria-labelledby="h-how">
   <div class="wrap reveal">
-    <h2 id="h-how">How it works</h2>
+    <h2 id="h-how">DuoDiscover&rsquo;s three mechanisms</h2>
     <div class="steps">
-      <div class="step"><img class="rb" src="assets/robot1.png" alt=""/><div class="n">STEP 1</div><div class="t">Co-discover a target and its yardstick</div><div class="s">each agent picks the part of the codebase worth optimizing and builds a proxy that scores an edit in seconds</div></div>
-      <div class="step"><img class="rb" src="assets/robot2.png" alt=""/><div class="n">STEP 2</div><div class="t">Keep the yardstick honest</div><div class="s">fidelity tests invalidate yardsticks that drift; a gain counts only when the true evaluation agrees</div></div>
-      <div class="step"><img class="rb" src="assets/robot3.png" alt=""/><div class="n">STEP 3</div><div class="t">Scale as a bottom-up fleet</div><div class="s">a lightweight orchestrator spawns, terminates, and briefs agents and combines confirmed work</div></div>
+      <div class="step"><img class="rb" src="assets/robot1.png" alt=""/><div class="n">FIRST</div><div class="t">Co-discover a target<br/>and its yardstick</div><div class="s">each agent picks what to optimize and builds a proxy that scores an edit in seconds</div></div>
+      <div class="step"><img class="rb" src="assets/robot2.png" alt=""/><div class="n">SECOND</div><div class="t">Keep the yardstick honest</div><div class="s">fidelity tests invalidate a yardstick once it stops ranking edits like the true objective; every gain is confirmed on the true evaluation</div></div>
+      <div class="step"><img class="rb" src="assets/robot3.png" alt=""/><div class="n">THIRD</div><div class="t">Scale as a bottom-up fleet</div><div class="s">a lightweight orchestrator spawns, terminates, and briefs agents, and seeds new agents with others&rsquo; confirmed work</div></div>
     </div>
   </div>
 </section>
@@ -345,9 +351,9 @@
     <div class="grid">
       <div class="stat"><div class="tlogo"><span class="pl"><svg class="nvic" width="42" height="30" viewBox="0 0 40 28" fill="none" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="36" height="18" rx="4"/><circle cx="14" cy="13" r="5.6"/><circle cx="14" cy="13" r="1.6" fill="currentColor" stroke="none"/><path d="M25 9.5h8M25 13h8M25 16.5h5"/><path d="M10 22v3M20 22v3M30 22v3"/></svg></span></div><div class="big">#1</div><div class="ft"><a href="https://research.nvidia.com/benchmarks/sol-execbench" target="_blank" rel="noopener">SOL-ExecBench&nbsp;&#8599;</a></div><div class="fs"><span class="nv">NVIDIA</span>&#8217;s B200 leaderboard<br/><b>121</b> of 235 kernels*</div></div>
       <div class="stat"><div class="tlogo"><span class="pl"><img class="tl-l" src="assets/task_swe.png" alt=""/><img class="tl-d" src="assets/task_swe_d.png" alt=""/></span></div><div class="big count" data-target="15.02" data-dec="2" data-suf="&times;">0.00&times;</div><div class="ft"><a href="https://arxiv.org/abs/2511.06090" target="_blank" rel="noopener">SWE-fficiency&nbsp;&#8599;</a></div><div class="fs">speedup on real repos<br/>human experts: <b>6.90&times;</b></div></div>
-      <div class="stat"><div class="tlogo"><span class="pl"><img class="tl-l" src="assets/task_vllm_l.png" alt=""/><img class="tl-d" src="assets/task_vllm_d.png" alt=""/></span></div><div class="big count" data-target="1.92" data-dec="2" data-suf="&times;">0.00&times;</div><div class="ft"><a href="https://github.com/vllm-project/vllm" target="_blank" rel="noopener">vLLM serving&nbsp;&#8599;</a></div><div class="fs">~85&thinsp;min per true evaluation<br/>Claude Code: <b>1.07&times;</b></div></div>
-      <div class="stat"><div class="tlogo"><span class="pl"><svg class="tic" width="38" height="30" viewBox="0 0 36 30" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><rect x="5.5" y="7" width="25" height="16" rx="3"/><rect x="14" y="11.5" width="8" height="7" rx="1.6" fill="#C27803" stroke="none"/><path d="M10.5 7V3M15.5 7V3M20.5 7V3M25.5 7V3M10.5 27v-4M15.5 27v-4M20.5 27v-4M25.5 27v-4M5.5 11H2M5.5 19H2M30.5 11H34M30.5 19H34"/></svg></span></div><div class="big count" data-pre="+" data-target="6.3" data-dec="1" data-suf="%">+0.0%</div><div class="ft"><a href="https://sites.google.com/view/dpc4-2026/home" target="_blank" rel="noopener">CPU prefetcher &middot; DPC4&nbsp;&#8599;</a></div><div class="fs">up to 28&thinsp;h per true evaluation<br/>best human design: <b>+3.5%</b></div></div>
-      <div class="stat"><div class="tlogo"><span class="pl"><img class="ftk tl-l" src="assets/task_freetoken_l.svg" alt=""/><img class="ftk tl-d" src="assets/task_freetoken_d.svg" alt=""/></span></div><div class="big count" data-target="1.44" data-dec="2" data-suf="&times;">0.00&times;</div><div class="ft"><a href="https://github.com/FlashML-org/FreeToken" target="_blank" rel="noopener">FreeToken &middot; MoE decode&nbsp;&#8599;</a></div><div class="fs">Claude Code: <b>1.05&times;</b><br/><a href="https://github.com/FlashML-org/FreeToken/pull/619" target="_blank" rel="noopener">merged upstream&nbsp;&#8599;</a></div></div>
+      <div class="stat"><div class="tlogo"><span class="pl"><img class="tl-l" src="assets/task_vllm_l.png" alt=""/><img class="tl-d" src="assets/task_vllm_d.png" alt=""/></span></div><div class="big count" data-target="1.92" data-dec="2" data-suf="&times;">0.00&times;</div><div class="ft"><a href="https://github.com/vllm-project/vllm" target="_blank" rel="noopener">vLLM serving&nbsp;&#8599;</a></div><div class="fs">~85&thinsp;min per true eval<br/>Claude Code: <b>1.07&times;</b></div></div>
+      <div class="stat"><div class="tlogo"><span class="pl"><svg class="tic" width="38" height="30" viewBox="0 0 36 30" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><rect x="5.5" y="7" width="25" height="16" rx="3"/><rect x="14" y="11.5" width="8" height="7" rx="1.6" fill="#C27803" stroke="none"/><path d="M10.5 7V3M15.5 7V3M20.5 7V3M25.5 7V3M10.5 27v-4M15.5 27v-4M20.5 27v-4M25.5 27v-4M5.5 11H2M5.5 19H2M30.5 11H34M30.5 19H34"/></svg></span></div><div class="big count" data-pre="+" data-target="6.3" data-dec="1" data-suf="%">+0.0%</div><div class="ft"><a href="https://sites.google.com/view/dpc4-2026/home" target="_blank" rel="noopener">CPU prefetcher &middot; DPC4&nbsp;&#8599;</a></div><div class="fs">up to 28&thinsp;h per true eval<br/>best human design: <b>+3.5%</b></div></div>
+      <div class="stat"><div class="tlogo"><span class="pl"><img class="ftk tl-l" src="assets/task_freetoken_l.svg" alt=""/><img class="ftk tl-d" src="assets/task_freetoken_d.svg" alt=""/></span></div><div class="big count" data-target="1.44" data-dec="2" data-suf="&times;">0.00&times;</div><div class="ft"><a href="https://github.com/FlashML-org/FreeToken" target="_blank" rel="noopener">FreeToken &middot; MoE decode&nbsp;&#8599;</a></div><div class="fs">Claude Code: <b>1.05&times;</b><br/><a href="https://github.com/FlashML-org/FreeToken/pull/619" target="_blank" rel="noopener">merged PR&nbsp;&#8599;</a></div></div>
       <div class="stat"><div class="tlogo"><span class="pl"><svg class="tic" width="30" height="32" viewBox="0 0 30 32" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="15" cy="18.5" r="10.5"/><path d="M12 2.5h6M15 2.5v4.5"/><path d="M23.3 9.3l2.2-2.2"/><path d="M15 18.5l5-5.5" stroke="#C27803" stroke-width="2.8"/><circle cx="15" cy="18.5" r="1.8" fill="#C27803" stroke="none"/></svg></span></div><div class="big count" data-target="2.9" data-dec="1" data-suf="&times;">0.0&times;</div><div class="ft">faster than Claude Code</div><div class="fs">same score &middot; <b>2.8&thinsp;h</b> vs 8&thinsp;h<br/><b>13</b> vs 76 evals &middot; <b>$80</b> vs $309</div></div>
     </div>
     <p class="gridnote">*&nbsp;Leaderboard standings as of Sep&nbsp;10,&nbsp;2026.</p>
@@ -360,8 +366,8 @@
   <div class="wrap reveal">
     <h2 id="h-auth">Authors</h2>
     <div class="authors">
-      <div class="tier-first"><span class="n">Shubham Agarwal<sup>*1,2</sup></span>, <span class="n">Akshat Gupta<sup>*1,2</sup></span>,
-      <span class="n">Mike Heddes<sup>*1</sup></span>, <span class="n">Dilara Soylu<sup>*1,3</sup></span></div>
+      <div class="tier-first"><span class="n">Shubham Agarwal<sup><span class="eqs">&#9733;</span>1,2</sup></span>, <span class="n">Akshat Gupta<sup><span class="eqs">&#9733;</span>1,2</sup></span>,
+      <span class="n">Mike Heddes<sup><span class="eqs">&#9733;</span>1</sup></span>, <span class="n">Dilara Soylu<sup><span class="eqs">&#9733;</span>1,3</sup></span></div>
       <div class="tier-mid">
       <span class="n">Rui Meng<sup>1</sup></span>, <span class="n">Patrick Tser Jern Kon<sup>1</sup></span>,
       <span class="n">Jiefeng Chen<sup>1</sup></span>, <span class="n">Mert Cemri<sup>1,2</sup></span>,
@@ -373,9 +379,9 @@
       <span class="n">Vahab Mirrokni<sup>1</sup></span>, <span class="n">Burak Gokturk<sup>1</sup></span>,
       <span class="n">Parthasarathy Ranganathan<sup>1</sup></span>, <span class="n">Tomas Pfister<sup>1</sup></span>
       </div>
-      <div class="tier-last"><span class="n">Nanyun Peng<sup>&dagger;1</sup></span> and <span class="n">Chun-Liang Li<sup>&dagger;1</sup></span></div>
+      <div class="tier-last"><span class="n">Nanyun Peng<sup><span class="cld">&#9670;</span>1</sup></span> and <span class="n">Chun-Liang Li<sup><span class="cld">&#9670;</span>1</sup></span></div>
       <div class="eq"><sup>1</sup><span class="aff-g">Google</span> &nbsp;&middot;&nbsp; <sup>2</sup><span class="aff-b">UC Berkeley</span> &nbsp;&middot;&nbsp; <sup>3</sup><span class="aff-s">Stanford University</span></div>
-      <div class="eq"><sup>*</sup>Equal contribution, ordered alphabetically. <sup>&dagger;</sup>Co-last authors.</div>
+      <div class="eq"><sup><span class="eqs">&#9733;</span></sup>Equal contribution, ordered alphabetically. <sup><span class="cld">&#9670;</span></sup>Co-last authors.</div>
     </div>
   </div>
 </section>
@@ -385,12 +391,12 @@
     <h2 id="h-bib">BibTeX</h2>
     <div class="bibwrap">
     <button class="copybtn" id="copyBib" aria-label="Copy BibTeX to clipboard"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span>Copy</span></button>
-    <pre id="bib">@article{duodiscover2026,
-  title   = {DuoDiscover: Scaling Autonomous Discovery Beyond the Evaluation Bottleneck},
-  author  = {Agarwal, Shubham and Gupta, Akshat and Heddes, Mike and Soylu, Dilara and others},
-  journal = {arXiv preprint arXiv:2610.17184},
-  year    = {2026},
-  note    = {Dilara Soylu*, Mike Heddes*, Akshat Gupta*, Shubham Agarwal* contributed equally to this work.}
+    <pre id="bib">@misc{duodiscover2026,
+  title         = {DuoDiscover: Scaling Autonomous Discovery Beyond the Evaluation Bottleneck},
+  author        = {Shubham Agarwal and Akshat Gupta and Mike Heddes and Dilara Soylu and Rui Meng and Patrick Tser Jern Kon and Jiefeng Chen and Mert Cemri and Shu Liu and Abe Gonzalez and Akanksha Jain and Bhavana Dalvi Mishra and Linfeng Song and Vilobh Meshram and Xiangru Tang and Jinsung Yoon and Aditya Parameswaran and Ion Stoica and Vahab Mirrokni and Burak Gokturk and Parthasarathy Ranganathan and Tomas Pfister and Nanyun Peng and Chun-Liang Li},
+  year          = {2026},
+  url           = {https://arxiv.org/abs/2610.17184},
+  note          = {Dilara Soylu*, Mike Heddes*, Akshat Gupta*, Shubham Agarwal* contributed equally to this work.}
 }</pre>
     </div>
   </div>
