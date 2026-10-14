@@ -18,20 +18,20 @@
 <style>
   :root{
     --goldink:#9A6000; --brandgold:#C27803; --cardinal:#8C1515;
-    --bg:#f7f4ee; --card:#ffffff; --line:#ece6d8; --ink:#263238; --grey:#5b6670;
+    --bg:#F9F8F5; --card:#ffffff; --line:#E7E4DF; --ink:#263238; --grey:#5b6670;
     --duo:#0B3D91;--papername:#0B3D91; --head:#0B3D91; --accent:#0B3D91; --accentink:#ffffff;
     --shadow:rgba(11,61,145,.14);
-    --grid:rgba(11,61,145,.020); --gridb:rgba(11,61,145,.034); --float:rgba(11,61,145,.11); --floatg:rgba(194,120,3,.12); --spot:rgba(194,120,3,.13);
-    --au1:rgba(194,120,3,.15); --au2:rgba(11,61,145,.13); --au3:rgba(11,61,145,.11); --nv:#4F7A00;
-    --radius:16px; --rest:0 1px 2px var(--shadow),0 6px 20px var(--shadow); --hover:0 16px 34px var(--shadow);
+    --grid:rgba(11,61,145,0); --gridb:rgba(11,61,145,0); --float:rgba(11,61,145,.11); --floatg:rgba(194,120,3,.12); --flr:rgba(168,48,38,.18); --fly:rgba(181,135,3,.19); --flb:rgba(48,96,176,.18); --flgr:rgba(37,121,59,.18); --spot:rgba(194,120,3,.13);
+    --au1:rgba(194,120,3,0); --au2:rgba(11,61,145,0); --au3:rgba(11,61,145,0); --nv:#4F7A00;
+    --radius:12px; --rest:0 1px 2px var(--shadow); --hover:0 16px 34px var(--shadow);
     --maxw:900px;
   }
   [data-theme="dark"]{
     --bg:#0f1824; --card:#1b2a38; --line:#30404e; --ink:#e9eef3; --grey:#9fb0bd;
     --duo:#DBE4F3;--papername:#DCE5F5; --head:#CFDCF2; --accent:#2F5EB0; --accentink:#ffffff;
     --shadow:rgba(0,0,0,.5);
-    --grid:rgba(125,160,215,.045); --gridb:rgba(125,160,215,.07); --float:rgba(115,157,220,.14); --floatg:rgba(240,166,58,.15); --spot:rgba(105,152,230,.17);
-    --au1:rgba(194,120,3,.12); --au2:rgba(64,118,205,.18); --au3:rgba(64,118,205,.12); --nv:#76B900;
+    --grid:rgba(125,160,215,0); --gridb:rgba(125,160,215,0); --float:rgba(115,157,220,.14); --floatg:rgba(240,166,58,.15); --flr:rgba(234,67,53,.21); --fly:rgba(251,188,4,.21); --flb:rgba(66,133,244,.22); --flgr:rgba(52,168,83,.21); --spot:rgba(105,152,230,.17);
+    --au1:rgba(194,120,3,0); --au2:rgba(64,118,205,0); --au3:rgba(64,118,205,0); --nv:#76B900;
     --goldink:#f0a63a; --brandgold:#E9A23B;
   }
   *{box-sizing:border-box}
@@ -73,34 +73,45 @@
 
   /* floating brand shapes (the duo rounded-square motif) - subtle, "alive", BOTH themes */
   .floaties{position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none}
-  .floatie{position:absolute;border-radius:28%;background:var(--float);filter:blur(.5px);animation:floatup linear infinite}
-  .floatie.ring{background:transparent;box-shadow:inset 0 0 0 4px var(--float)}
-  .floatie.gold{background:var(--floatg)}
-  .floatie.gold.ring{background:transparent;box-shadow:inset 0 0 0 4px var(--floatg)}
+  .floatie{position:absolute;top:100%;border-radius:28%;background:var(--fc,var(--float));filter:blur(.5px);animation:floatup linear infinite}
+  .floatie.ring{background:transparent;box-shadow:inset 0 0 0 4px var(--fc,var(--float))}
+  .floatie.gold{background:var(--fc,var(--floatg))}
+  .floatie.gold.ring{background:transparent;box-shadow:inset 0 0 0 4px var(--fc,var(--floatg))}
+  /* duo variant: the logo's two interlocking squares (solid lower-left, ring upper-right) */
+  .floatie.duo{background:transparent!important;box-shadow:none!important}
+  .floatie.duo::before{content:"";position:absolute;left:0;bottom:0;width:64%;height:64%;border-radius:28%;background:var(--fc,var(--float))}
+  .floatie.duo::after{content:"";position:absolute;right:0;top:0;width:64%;height:64%;border-radius:28%;box-shadow:inset 0 0 0 3px var(--fc,var(--float))}
+  /* squares in the Google-derived palette, two per color */
+  .f1{--fc:var(--flb)} .f2{--fc:var(--fly)} .f3{--fc:var(--flr)} .f4{--fc:var(--flgr)}
+  .f5{--fc:var(--fly)} .f6{--fc:var(--flb)} .f7{--fc:var(--flr)} .f8{--fc:var(--flgr)}
+  .f9{left:12%; width:34px; height:34px; animation-duration:46s; animation-delay:-11s; --fc:var(--flgr)}
+  .f10{left:27%;width:62px; height:62px; animation-duration:58s; animation-delay:-31s; --fc:var(--flr)}
+  .f11{left:50%;width:24px; height:24px; animation-duration:33s; animation-delay:-19s; --fc:var(--flb)}
+  .f12{left:66%;width:58px; height:58px; animation-duration:52s; animation-delay:-40s; --fc:var(--fly)}
   /* gentle S-curve rise + sway, so they drift rather than track straight up */
   @keyframes floatup{
-    0%{transform:translate(0,18vh) rotate(0deg);opacity:0}
-    12%{opacity:.5}
-    50%{transform:translate(22px,-52vh) rotate(22deg);opacity:.55}
-    88%{opacity:.5}
-    100%{transform:translate(-12px,-124vh) rotate(44deg);opacity:0}}
+    0%{transform:translate(0,6vh) rotate(0deg);opacity:0}
+    10%{opacity:.5}
+    50%{transform:translate(22px,-58vh) rotate(22deg);opacity:.55}
+    90%{opacity:.5}
+    100%{transform:translate(-12px,-130vh) rotate(44deg);opacity:0}}
   .f1{left:6%;  width:46px; height:46px; animation-duration:42s; animation-delay:-6s}
   .f2{left:19%; width:26px; height:26px; animation-duration:34s; animation-delay:-16s}
   .f3{left:33%; width:62px; height:62px; animation-duration:55s; animation-delay:-28s}
-  .f4{left:39%; width:30px; height:30px; animation-duration:38s; animation-delay:-9s}
+  .f4{left:39%; width:46px; height:46px; animation-duration:38s; animation-delay:-9s}
   .f5{left:59%; width:40px; height:40px; animation-duration:47s; animation-delay:-21s}
-  .f6{left:72%; width:52px; height:52px; animation-duration:50s; animation-delay:-34s}
+  .f6{left:72%; width:68px; height:68px; animation-duration:50s; animation-delay:-34s}
   .f7{left:85%; width:28px; height:28px; animation-duration:36s; animation-delay:-13s}
   .f8{left:93%; width:36px; height:36px; animation-duration:44s; animation-delay:-3s}
   /* varied counter-motion + soft depth so the drift never looks like a uniform loop */
   .f2,.f4,.f6,.f8{animation-name:floatup-alt}
   .f3,.f6{filter:blur(2px)} .f5{filter:blur(1.2px)}
   @keyframes floatup-alt{
-    0%{transform:translate(0,18vh) rotate(0deg);opacity:0}
-    12%{opacity:.5}
-    50%{transform:translate(-26px,-52vh) rotate(-20deg);opacity:.55}
-    88%{opacity:.5}
-    100%{transform:translate(14px,-124vh) rotate(-40deg);opacity:0}}
+    0%{transform:translate(0,6vh) rotate(0deg);opacity:0}
+    10%{opacity:.5}
+    50%{transform:translate(-26px,-58vh) rotate(-20deg);opacity:.55}
+    90%{opacity:.5}
+    100%{transform:translate(14px,-130vh) rotate(-40deg);opacity:0}}
 
   a{color:var(--accent)} a:hover{opacity:.85}
   .wrap{max-width:var(--maxw);margin:0 auto;padding:0 clamp(16px,4vw,22px)}
@@ -109,7 +120,7 @@
   /* theme toggle */
   .toggle{position:fixed;top:16px;right:16px;z-index:5;width:44px;height:44px;border-radius:50%;
     border:1px solid var(--line);background:var(--card);color:var(--ink);font-size:18px;cursor:pointer;
-    display:grid;place-items:center;box-shadow:0 4px 14px var(--shadow);transition:transform .12s,background .3s}
+    display:grid;place-items:center;box-shadow:0 2px 6px var(--shadow);transition:transform .12s,background .3s}
   .toggle:hover{transform:translateY(-1px) rotate(12deg)}
   [data-theme="dark"] .toggle{box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 6px 18px rgba(0,0,0,.5);border-color:#3a4a58}
 
@@ -153,8 +164,8 @@
   .chip{display:inline-flex;align-items:center;padding:14px 32px;border-radius:999px;font-weight:700;font-size:16px;
     text-decoration:none;background:var(--accent);color:var(--accentink);border:1.5px solid var(--accent);
     transition:transform .16s cubic-bezier(.2,.7,.2,1),box-shadow .15s,background .3s}
-  .chip:hover{transform:translateY(-2px);box-shadow:0 10px 24px var(--shadow);opacity:1}
-  .chip:active{transform:translateY(0);box-shadow:0 4px 12px var(--shadow)}
+  .chip:hover{transform:translateY(-1px);box-shadow:0 3px 10px var(--shadow);opacity:1}
+  .chip:active{transform:translateY(0);box-shadow:0 2px 6px var(--shadow)}
   .chip.ghost{background:transparent;color:var(--accent)}
   [data-theme="dark"] .chip.ghost{color:var(--head);border-color:var(--head)}
 
@@ -163,7 +174,7 @@
   main>section+section{padding-top:clamp(20px,2.6vw,32px)}            /* tighter within-group so dividers read as real breaks */
   :root{--t-label:13px;--t-tag:11px;--t-title:16px;--t-sub:13.5px;--t-body:16.5px;--t-small:13px;--t-num:clamp(36px,6.4vw,44px)}
   h2{font-size:var(--t-label);letter-spacing:.2em;text-transform:uppercase;color:var(--head);font-weight:800;text-align:center;margin:0 0 18px}
-  .video video{width:100%;border-radius:var(--radius);display:block;background:#000;box-shadow:0 24px 64px var(--shadow),0 0 0 1px var(--line)}
+  .video video{width:100%;border-radius:var(--radius);display:block;background:#000;box-shadow:0 8px 28px var(--shadow),0 0 0 1px var(--line)}
 
   /* how it works */
   .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:24px}
@@ -183,6 +194,11 @@
   .abstract{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:30px clamp(20px,5vw,36px);
     margin:0 auto;font-size:var(--t-body);line-height:1.7;color:var(--ink);box-shadow:var(--rest);transition:background .3s}
   .abstract strong{color:var(--head)}
+  .abstract .abslogo{height:.92em;vertical-align:-.12em;margin-right:.18em}
+  .abstract .abslogo.mark-l{display:inline-block}
+  .abstract .abslogo.mark-d{display:none}
+  [data-theme="dark"] .abstract .abslogo.mark-l{display:none}
+  [data-theme="dark"] .abstract .abslogo.mark-d{display:inline-block}
   .mark-d{display:none} [data-theme="dark"] .mark-l{display:none} [data-theme="dark"] .mark-d{display:block}
   .abstract{text-align:justify;text-justify:inter-word;hyphens:manual}
   .nw{white-space:nowrap}
@@ -254,9 +270,13 @@
 <div class="spot" aria-hidden="true"></div>
 <div class="floaties" aria-hidden="true">
   <span class="floatie f1 ring"></span><span class="floatie f2 gold"></span>
-  <span class="floatie f3 ring"></span><span class="floatie f4"></span>
-  <span class="floatie f5 gold ring"></span><span class="floatie f6 ring"></span>
+  <span class="floatie f3 ring"></span><span class="floatie f4 duo"></span>
+  <span class="floatie f5 gold ring"></span><span class="floatie f6 duo"></span>
   <span class="floatie f7"></span><span class="floatie f8 gold"></span>
+<span class="floatie f9"></span>
+<span class="floatie f10 duo"></span>
+<span class="floatie f11"></span>
+<span class="floatie f12 ring"></span>
 </div>
 <button class="toggle" id="themeBtn" aria-label="Switch to dark mode" aria-pressed="false">🌙</button>
 
@@ -289,9 +309,9 @@
   <div class="wrap reveal">
     <h2 id="h-how">How it works</h2>
     <div class="steps">
-      <div class="step"><img class="rb" src="assets/robot1.png" alt=""/><div class="n">STEP 1</div><div class="t">Find a target</div><div class="s">the part of the codebase worth optimizing</div></div>
-      <div class="step"><img class="rb" src="assets/robot2.png" alt=""/><div class="n">STEP 2</div><div class="t">Build a fast yardstick</div><div class="s">a proxy that scores an edit in seconds</div></div>
-      <div class="step"><img class="rb" src="assets/robot3.png" alt=""/><div class="n">STEP 3</div><div class="t">Verify on the real test</div><div class="s">a gain counts only when the real evaluation agrees</div></div>
+      <div class="step"><img class="rb" src="assets/robot1.png" alt=""/><div class="n">STEP 1</div><div class="t">Co-discover a target and its yardstick</div><div class="s">each agent picks the part of the codebase worth optimizing and builds a proxy that scores an edit in seconds</div></div>
+      <div class="step"><img class="rb" src="assets/robot2.png" alt=""/><div class="n">STEP 2</div><div class="t">Keep the yardstick honest</div><div class="s">fidelity tests invalidate yardsticks that drift; a gain counts only when the true evaluation agrees</div></div>
+      <div class="step"><img class="rb" src="assets/robot3.png" alt=""/><div class="n">STEP 3</div><div class="t">Scale as a bottom-up fleet</div><div class="s">a lightweight orchestrator spawns, terminates, and briefs agents and combines confirmed work</div></div>
     </div>
   </div>
 </section>
@@ -302,16 +322,19 @@
   <div class="wrap reveal">
     <h2 id="h-abs">Abstract</h2>
     <div class="abstract">
-      Most optimization frameworks assume candidates can be evaluated cheaply over many iterations.
-      In practice, a single true evaluation (a full benchmark or serving trace) can take hours, so a
-      search affords only a handful. When evaluation is the bottleneck, search must discover both a
-      promising <strong>target</strong> to optimize and an inexpensive way to <strong>measure</strong> progress on it.
-      In <strong>DuoDiscover</strong>, each agent <span class="nw">co-discovers</span> a target and builds a <span class="nw">low-cost</span> proxy for it
-      (its <strong>yardstick</strong>), then optimizes against the yardstick rather than the true evaluation. A
-      <strong>fidelity test</strong> continually checks that each yardstick still ranks edits like the true
-      objective and drops any that drift, and every gain is confirmed on the true evaluation. The orchestrator
-      is lightweight: it spawns, stops, and combines agents' confirmed work, but it never assigns their
-      targets; each agent chooses what to optimize.
+      Evaluation has been central to advances in AI, and it is equally critical to autonomous
+      discovery. Yet scaling autonomous discovery to real-world engineering challenges faces a fundamental
+      bottleneck: <strong>the cost of evaluating progress</strong>. In real settings, a single true evaluation, such as a
+      full benchmark or serving trace, can take hours, so a search can afford only a handful of true evaluations.
+      We present <img class="abslogo mark-l" src="assets/logo.png" alt=""/><img class="abslogo mark-d" src="assets/logo_dark.png" alt=""/><strong>DuoDiscover</strong>, a search system that jointly discovers <strong>what to optimize</strong> and
+      <strong>how to evaluate progress</strong> efficiently, through three mechanisms. First, each worker in a fleet of
+      coding agents co-discovers an optimization <strong>target</strong> and a fast, tailored proxy evaluator, which we
+      call a <strong>yardstick</strong>. The agent then hill-climbs the yardstick rather than the true evaluation. Second,
+      since search can exploit gaps between a yardstick and the true objective, <strong>fidelity tests</strong> continually
+      recheck each yardstick&rsquo;s ranking and invalidate any that drift. Third, the fleet is bottom-up, with no
+      central decomposition of the problem. A lightweight orchestrator spawns and terminates agents, briefs
+      running ones, and seeds new agents with others&rsquo; confirmed work. DuoDiscover enables autonomous
+      optimization from software to chip architecture.
     </div>
   </div>
 </section>
@@ -322,8 +345,8 @@
     <div class="grid">
       <div class="stat"><div class="tlogo"><span class="pl"><svg class="nvic" width="42" height="30" viewBox="0 0 40 28" fill="none" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="36" height="18" rx="4"/><circle cx="14" cy="13" r="5.6"/><circle cx="14" cy="13" r="1.6" fill="currentColor" stroke="none"/><path d="M25 9.5h8M25 13h8M25 16.5h5"/><path d="M10 22v3M20 22v3M30 22v3"/></svg></span></div><div class="big">#1</div><div class="ft"><a href="https://research.nvidia.com/benchmarks/sol-execbench" target="_blank" rel="noopener">SOL-ExecBench&nbsp;&#8599;</a></div><div class="fs"><span class="nv">NVIDIA</span>&#8217;s B200 leaderboard<br/><b>121</b> of 235 kernels*</div></div>
       <div class="stat"><div class="tlogo"><span class="pl"><img class="tl-l" src="assets/task_swe.png" alt=""/><img class="tl-d" src="assets/task_swe_d.png" alt=""/></span></div><div class="big count" data-target="15.02" data-dec="2" data-suf="&times;">0.00&times;</div><div class="ft"><a href="https://arxiv.org/abs/2511.06090" target="_blank" rel="noopener">SWE-fficiency&nbsp;&#8599;</a></div><div class="fs">speedup on real repos<br/>human experts: <b>6.90&times;</b></div></div>
-      <div class="stat"><div class="tlogo"><span class="pl"><img class="tl-l" src="assets/task_vllm_l.png" alt=""/><img class="tl-d" src="assets/task_vllm_d.png" alt=""/></span></div><div class="big count" data-target="1.92" data-dec="2" data-suf="&times;">0.00&times;</div><div class="ft"><a href="https://github.com/vllm-project/vllm" target="_blank" rel="noopener">vLLM serving&nbsp;&#8599;</a></div><div class="fs">~85&thinsp;min per real eval<br/>Claude Code: <b>1.07&times;</b></div></div>
-      <div class="stat"><div class="tlogo"><span class="pl"><svg class="tic" width="38" height="30" viewBox="0 0 36 30" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><rect x="5.5" y="7" width="25" height="16" rx="3"/><rect x="14" y="11.5" width="8" height="7" rx="1.6" fill="#C27803" stroke="none"/><path d="M10.5 7V3M15.5 7V3M20.5 7V3M25.5 7V3M10.5 27v-4M15.5 27v-4M20.5 27v-4M25.5 27v-4M5.5 11H2M5.5 19H2M30.5 11H34M30.5 19H34"/></svg></span></div><div class="big count" data-pre="+" data-target="6.3" data-dec="1" data-suf="%">+0.0%</div><div class="ft"><a href="https://sites.google.com/view/dpc4-2026/home" target="_blank" rel="noopener">CPU prefetcher &middot; DPC4&nbsp;&#8599;</a></div><div class="fs">up to 28&thinsp;h per real eval<br/>best human design: <b>+3.5%</b></div></div>
+      <div class="stat"><div class="tlogo"><span class="pl"><img class="tl-l" src="assets/task_vllm_l.png" alt=""/><img class="tl-d" src="assets/task_vllm_d.png" alt=""/></span></div><div class="big count" data-target="1.92" data-dec="2" data-suf="&times;">0.00&times;</div><div class="ft"><a href="https://github.com/vllm-project/vllm" target="_blank" rel="noopener">vLLM serving&nbsp;&#8599;</a></div><div class="fs">~85&thinsp;min per true evaluation<br/>Claude Code: <b>1.07&times;</b></div></div>
+      <div class="stat"><div class="tlogo"><span class="pl"><svg class="tic" width="38" height="30" viewBox="0 0 36 30" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><rect x="5.5" y="7" width="25" height="16" rx="3"/><rect x="14" y="11.5" width="8" height="7" rx="1.6" fill="#C27803" stroke="none"/><path d="M10.5 7V3M15.5 7V3M20.5 7V3M25.5 7V3M10.5 27v-4M15.5 27v-4M20.5 27v-4M25.5 27v-4M5.5 11H2M5.5 19H2M30.5 11H34M30.5 19H34"/></svg></span></div><div class="big count" data-pre="+" data-target="6.3" data-dec="1" data-suf="%">+0.0%</div><div class="ft"><a href="https://sites.google.com/view/dpc4-2026/home" target="_blank" rel="noopener">CPU prefetcher &middot; DPC4&nbsp;&#8599;</a></div><div class="fs">up to 28&thinsp;h per true evaluation<br/>best human design: <b>+3.5%</b></div></div>
       <div class="stat"><div class="tlogo"><span class="pl"><img class="ftk tl-l" src="assets/task_freetoken_l.svg" alt=""/><img class="ftk tl-d" src="assets/task_freetoken_d.svg" alt=""/></span></div><div class="big count" data-target="1.44" data-dec="2" data-suf="&times;">0.00&times;</div><div class="ft"><a href="https://github.com/FlashML-org/FreeToken" target="_blank" rel="noopener">FreeToken &middot; MoE decode&nbsp;&#8599;</a></div><div class="fs">Claude Code: <b>1.05&times;</b><br/><a href="https://github.com/FlashML-org/FreeToken/pull/619" target="_blank" rel="noopener">merged upstream&nbsp;&#8599;</a></div></div>
       <div class="stat"><div class="tlogo"><span class="pl"><svg class="tic" width="30" height="32" viewBox="0 0 30 32" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="15" cy="18.5" r="10.5"/><path d="M12 2.5h6M15 2.5v4.5"/><path d="M23.3 9.3l2.2-2.2"/><path d="M15 18.5l5-5.5" stroke="#C27803" stroke-width="2.8"/><circle cx="15" cy="18.5" r="1.8" fill="#C27803" stroke="none"/></svg></span></div><div class="big count" data-target="2.9" data-dec="1" data-suf="&times;">0.0&times;</div><div class="ft">faster than Claude Code</div><div class="fs">same score &middot; <b>2.8&thinsp;h</b> vs 8&thinsp;h<br/><b>13</b> vs 76 evals &middot; <b>$80</b> vs $309</div></div>
     </div>
@@ -413,10 +436,29 @@
     cb.classList.add('ok');cb.querySelector('span').textContent='Copied';
     setTimeout(()=>{cb.classList.remove('ok');cb.querySelector('span').textContent='Copy';},1600);});}
 
-  // cursor-follow glow (desktop pointer only, off for reduced-motion)
+  // cursor-follow glow (desktop pointer only, off for reduced-motion).
+  // The glow's tint walks the four Google colors as you travel down the page: blue -> red -> yellow -> green.
   const spot=document.querySelector('.spot');
   if(spot && !rm && matchMedia('(hover:hover) and (pointer:fine)').matches){
-    addEventListener('pointermove',e=>{spot.style.left=e.clientX+'px';spot.style.top=e.clientY+'px';},{passive:true});
+    // Google red -> yellow -> blue -> green -> red -> blue; light theme uses ~28% darkened
+    // derivatives (pure logo colors wash out on cream).
+    const GOOGLE=[[234,67,53],[251,188,4],[66,133,244],[52,168,83],[234,67,53],[66,133,244]];
+    const DARKENED=GOOGLE.map(c=>c.map(v=>Math.round(v*0.72)));
+    let lastY=innerHeight*0.4;
+    const tint=()=>{
+      const doc=document.documentElement;
+      const dark=doc.getAttribute('data-theme')==='dark';
+      const stops=dark?GOOGLE:DARKENED;
+      const span=Math.max(1,doc.scrollHeight-innerHeight);
+      const f=Math.min(1,Math.max(0,(scrollY+lastY)/(span+innerHeight)));
+      const n=stops.length-1, seg=Math.min(n-0.001,f*n), i=Math.floor(seg), u=seg-i;
+      const c=stops[i].map((v,k)=>Math.round(v+(stops[i+1][k]-v)*u));
+      const a=dark?0.19:0.17;
+      spot.style.background=`radial-gradient(circle, rgba(${c[0]},${c[1]},${c[2]},${a}) 0%, transparent 68%)`;
+    };
+    addEventListener('pointermove',e=>{spot.style.left=e.clientX+'px';spot.style.top=e.clientY+'px';lastY=e.clientY;tint();},{passive:true});
+    addEventListener('scroll',tint,{passive:true});
+    tint();
   }
 </script>
 </body>
