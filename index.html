@@ -19,19 +19,19 @@
   :root{
     --goldink:#9A6000; --brandgold:#C27803; --cardinal:#8C1515;
     --bg:#f7f4ee; --card:#ffffff; --line:#ece6d8; --ink:#263238; --grey:#5b6670;
-    --duo:#003262; --head:#003262; --accent:#003262; --accentink:#ffffff;
-    --shadow:rgba(0,50,98,.14);
-    --grid:rgba(0,50,98,.020); --gridb:rgba(0,50,98,.034); --float:rgba(0,50,98,.11); --floatg:rgba(194,120,3,.12); --spot:rgba(194,120,3,.13);
-    --au1:rgba(194,120,3,.15); --au2:rgba(0,50,98,.13); --au3:rgba(0,50,98,.11); --nv:#4F7A00;
+    --duo:#0B3D91;--papername:#0B3D91; --head:#0B3D91; --accent:#0B3D91; --accentink:#ffffff;
+    --shadow:rgba(11,61,145,.14);
+    --grid:rgba(11,61,145,.020); --gridb:rgba(11,61,145,.034); --float:rgba(11,61,145,.11); --floatg:rgba(194,120,3,.12); --spot:rgba(194,120,3,.13);
+    --au1:rgba(194,120,3,.15); --au2:rgba(11,61,145,.13); --au3:rgba(11,61,145,.11); --nv:#4F7A00;
     --radius:16px; --rest:0 1px 2px var(--shadow),0 6px 20px var(--shadow); --hover:0 16px 34px var(--shadow);
     --maxw:900px;
   }
   [data-theme="dark"]{
     --bg:#0f1824; --card:#1b2a38; --line:#30404e; --ink:#e9eef3; --grey:#9fb0bd;
-    --duo:#dbe7f3; --head:#cfe0f2; --accent:#2f6fb0; --accentink:#ffffff;
+    --duo:#DBE4F3;--papername:#DCE5F5; --head:#CFDCF2; --accent:#2F5EB0; --accentink:#ffffff;
     --shadow:rgba(0,0,0,.5);
-    --grid:rgba(130,170,210,.045); --gridb:rgba(130,170,210,.07); --float:rgba(120,165,215,.14); --floatg:rgba(240,166,58,.15); --spot:rgba(110,165,225,.17);
-    --au1:rgba(194,120,3,.12); --au2:rgba(70,130,200,.18); --au3:rgba(70,130,200,.12); --nv:#76B900;
+    --grid:rgba(125,160,215,.045); --gridb:rgba(125,160,215,.07); --float:rgba(115,157,220,.14); --floatg:rgba(240,166,58,.15); --spot:rgba(105,152,230,.17);
+    --au1:rgba(194,120,3,.12); --au2:rgba(64,118,205,.18); --au3:rgba(64,118,205,.12); --nv:#76B900;
     --goldink:#f0a63a; --brandgold:#E9A23B;
   }
   *{box-sizing:border-box}
@@ -135,7 +135,7 @@
   .lockup{display:flex;align-items:center;justify-content:center;gap:clamp(10px,1.6vw,18px);flex-wrap:nowrap}
   .mark{width:clamp(50px,7.9vw,86px);height:auto;display:block;filter:drop-shadow(0 8px 20px var(--shadow))}
   h1{font-size:clamp(27px,8.1vw,90px);font-weight:900;letter-spacing:-.04em;margin:0;line-height:1}
-  h1 .d{color:var(--duo)} h1 .disc{color:var(--brandgold)}
+  h1 .d{color:var(--papername)} h1 .disc{color:var(--papername)}
   .tagline{font-size:clamp(17px,2.2vw,22px);color:var(--grey);font-weight:500;margin:28px auto 0;max-width:560px;line-height:1.5;letter-spacing:-.01em}
   .tagline em{font-style:italic;color:var(--head);font-weight:700}
 
@@ -145,7 +145,7 @@
   .affils a:hover{transform:translateY(-3px)}
   .affils a:hover img{filter:drop-shadow(0 10px 22px var(--shadow))}
   .affils a:focus-visible{outline:2.5px solid var(--accent);outline-offset:4px}
-  .affils .lk{position:absolute;top:7px;right:9px;width:13px;height:13px;stroke:#003262;stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round;opacity:0;transition:opacity .18s}
+  .affils .lk{position:absolute;top:7px;right:9px;width:13px;height:13px;stroke:#0B3D91;stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round;opacity:0;transition:opacity .18s}
   .affils a:hover .lk,.affils a:focus-visible .lk{opacity:.55}
   /* dark mode: keep affiliation logos in their real brand colours on a soft light plate */
 
@@ -202,12 +202,12 @@
   .gridnote{text-align:center;font-size:11.5px;color:var(--grey);margin:16px 0 0;letter-spacing:.01em}
   .tlogo{height:54px;display:flex;align-items:center;justify-content:center;margin:0 0 14px}
   .tlogo .pl{height:54px;min-width:54px;padding:0 14px;border-radius:16px;display:flex;align-items:center;justify-content:center;gap:0;
-    background:rgba(0,50,98,.055);border:1px solid rgba(0,50,98,.10);box-sizing:border-box}
-  [data-theme="dark"] .tlogo .pl{background:rgba(191,214,234,.07);border-color:rgba(191,214,234,.15)}
+    background:rgba(11,61,145,.055);border:1px solid rgba(11,61,145,.10);box-sizing:border-box}
+  [data-theme="dark"] .tlogo .pl{background:rgba(190,206,234,.07);border-color:rgba(190,206,234,.15)}
   .tlogo img{max-height:30px;max-width:150px;display:block}
   .tlogo img.ftk{max-height:18px}
-  .tlogo .tic{color:#113a66;display:block}
-  [data-theme="dark"] .tlogo .tic{color:#cfe0f2}
+  .tlogo .tic{color:#0B3D91;display:block}
+  [data-theme="dark"] .tlogo .tic{color:#CFDCF2}
   .nv{color:var(--nv);font-weight:800}
   .nvic{stroke:var(--nv);color:var(--nv)}
   .tlogo .tl-l{display:block}.tlogo .tl-d{display:none}
@@ -219,6 +219,13 @@
   .stat .fs b{color:var(--ink);font-weight:700}
   .authors{text-align:center;font-size:var(--t-body);max-width:800px;margin:0 auto;color:var(--grey);line-height:2;text-wrap:balance}
   .authors .n{white-space:nowrap;color:var(--ink)}
+  .authors .aff-g{color:var(--papername)}
+  .authors .aff-b{color:var(--brandgold)}
+  .authors .aff-s{color:var(--cardinal)}
+  [data-theme="dark"] .authors .aff-s{color:#D2524C}
+  .authors .tier-first{margin-bottom:.5em}
+  .authors .tier-last{margin-top:.5em}
+  .authors .tier-mid .n{color:color-mix(in srgb, var(--ink) 62%, var(--grey))}
   .authors sup{font-size:.6em;font-weight:500;color:var(--grey);line-height:0;vertical-align:.75em;margin-left:1.5px;letter-spacing:.02em}
   .eq{color:var(--grey);font-size:var(--t-small);line-height:1.6;margin-top:16px}
   .eq+.eq{margin-top:2px}
@@ -226,15 +233,8 @@
   pre{background:#0f1b27;color:#e9eef3;border:1px solid #1d2b38;border-radius:var(--radius);padding:20px clamp(16px,4vw,22px);overflow:auto;font-size:var(--t-small);
     font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;line-height:1.55;margin:0;tab-size:2;box-shadow:var(--rest)}
   [data-theme="dark"] pre{background:#0b141e;border-color:#33475a;box-shadow:inset 0 1px 0 rgba(255,255,255,.05)}
-  .chip.soon,.chip.soon:hover{cursor:default;opacity:.62;transform:none;box-shadow:none;position:relative}
-  .soonbadge{position:absolute;left:50%;bottom:calc(100% + 9px);transform:translateX(-50%) translateY(4px);white-space:nowrap;
-    font-size:10.5px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;background:var(--duo);color:var(--bg);
-    border-radius:999px;padding:5px 11px;box-shadow:0 6px 16px var(--shadow);opacity:0;pointer-events:none;
-    transition:opacity .18s ease,transform .18s ease}
-  .soonbadge::after{content:"";position:absolute;top:100%;left:50%;transform:translateX(-50%);border:5px solid transparent;border-top-color:var(--duo)}
-  .chip.soon:hover .soonbadge,.chip.soon:focus-visible .soonbadge{opacity:1;transform:translateX(-50%) translateY(0)}
   .bibwrap{position:relative}
-  .copybtn{position:absolute;top:12px;right:12px;display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.07);color:#cfe0f2;border:1px solid #33475a;border-radius:9px;padding:6.5px 12px;font:600 12.5px/1 Inter,system-ui,sans-serif;cursor:pointer;transition:background .15s,border-color .15s}
+  .copybtn{position:absolute;top:12px;right:12px;display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.07);color:#CFDCF2;border:1px solid #33475a;border-radius:9px;padding:6.5px 12px;font:600 12.5px/1 Inter,system-ui,sans-serif;cursor:pointer;transition:background .15s,border-color .15s}
   .copybtn:hover{background:rgba(255,255,255,.14);border-color:#4a6076}
   .copybtn svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
   .copybtn.ok{color:#7fd6a4;border-color:#3f6b54}
@@ -274,7 +274,6 @@
     </div>
     <div class="btns reveal" style="transition-delay:.28s">
       <a class="chip" href="https://arxiv.org/abs/2610.17184" target="_blank" rel="noopener" title="Read the paper on arXiv"><svg class="ci" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h6"/></svg>Paper</a>
-      <span class="chip ghost soon" tabindex="0">&lt;/&gt;&nbsp; Code<small class="soonbadge" role="tooltip">coming soon</small></span>
     </div>
   </div>
 </header>
@@ -338,8 +337,9 @@
   <div class="wrap reveal">
     <h2 id="h-auth">Authors</h2>
     <div class="authors">
-      <span class="n">Shubham Agarwal<sup>*1,2</sup></span>, <span class="n">Akshat Gupta<sup>*1,2</sup></span>,
-      <span class="n">Mike Heddes<sup>*1</sup></span>, <span class="n">Dilara Soylu<sup>*1,3</sup></span>,
+      <div class="tier-first"><span class="n">Shubham Agarwal<sup>*1,2</sup></span>, <span class="n">Akshat Gupta<sup>*1,2</sup></span>,
+      <span class="n">Mike Heddes<sup>*1</sup></span>, <span class="n">Dilara Soylu<sup>*1,3</sup></span></div>
+      <div class="tier-mid">
       <span class="n">Rui Meng<sup>1</sup></span>, <span class="n">Patrick Tser Jern Kon<sup>1</sup></span>,
       <span class="n">Jiefeng Chen<sup>1</sup></span>, <span class="n">Mert Cemri<sup>1,2</sup></span>,
       <span class="n">Shu Liu<sup>2</sup></span>, <span class="n">Abe Gonzalez<sup>1</sup></span>,
@@ -348,10 +348,11 @@
       <span class="n">Xiangru Tang<sup>1</sup></span>, <span class="n">Jinsung Yoon<sup>1</sup></span>,
       <span class="n">Aditya Parameswaran<sup>2</sup></span>, <span class="n">Ion Stoica<sup>2</sup></span>,
       <span class="n">Vahab Mirrokni<sup>1</sup></span>, <span class="n">Burak Gokturk<sup>1</sup></span>,
-      <span class="n">Parthasarathy Ranganathan<sup>1</sup></span>, <span class="n">Tomas Pfister<sup>1</sup></span>,
-      <span class="n">Nanyun Peng<sup>1</sup></span>, <span class="n">Chun-Liang Li<sup>1</sup></span>
-      <div class="eq"><sup>1</sup>Google &nbsp;&middot;&nbsp; <sup>2</sup>UC Berkeley &nbsp;&middot;&nbsp; <sup>3</sup>Stanford University</div>
-      <div class="eq"><sup>*</sup>Equal contribution.</div>
+      <span class="n">Parthasarathy Ranganathan<sup>1</sup></span>, <span class="n">Tomas Pfister<sup>1</sup></span>
+      </div>
+      <div class="tier-last"><span class="n">Nanyun Peng<sup>&dagger;1</sup></span> and <span class="n">Chun-Liang Li<sup>&dagger;1</sup></span></div>
+      <div class="eq"><sup>1</sup><span class="aff-g">Google</span> &nbsp;&middot;&nbsp; <sup>2</sup><span class="aff-b">UC Berkeley</span> &nbsp;&middot;&nbsp; <sup>3</sup><span class="aff-s">Stanford University</span></div>
+      <div class="eq"><sup>*</sup>Equal contribution, ordered alphabetically. <sup>&dagger;</sup>Co-last authors.</div>
     </div>
   </div>
 </section>
@@ -361,11 +362,12 @@
     <h2 id="h-bib">BibTeX</h2>
     <div class="bibwrap">
     <button class="copybtn" id="copyBib" aria-label="Copy BibTeX to clipboard"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span>Copy</span></button>
-    <pre id="bib">@article{duodiscover,
+    <pre id="bib">@article{duodiscover2026,
   title   = {DuoDiscover: Scaling Autonomous Discovery Beyond the Evaluation Bottleneck},
   author  = {Agarwal, Shubham and Gupta, Akshat and Heddes, Mike and Soylu, Dilara and others},
   journal = {arXiv preprint arXiv:2610.17184},
-  year    = {2026}
+  year    = {2026},
+  note    = {Dilara Soylu*, Mike Heddes*, Akshat Gupta*, Shubham Agarwal* contributed equally to this work.}
 }</pre>
     </div>
   </div>
