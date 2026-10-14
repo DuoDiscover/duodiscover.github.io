@@ -24,6 +24,7 @@
     --shadow:rgba(11,61,145,.14);
     --grid:rgba(11,61,145,0); --gridb:rgba(11,61,145,0); --float:rgba(11,61,145,.11); --floatg:rgba(194,120,3,.12); --flr:rgba(168,48,38,.18); --fly:rgba(181,135,3,.19); --flb:rgba(48,96,176,.18); --flgr:rgba(37,121,59,.18); --spot:rgba(194,120,3,.13);
     --au1:rgba(194,120,3,0); --au2:rgba(11,61,145,0); --au3:rgba(11,61,145,0); --nv:#4F7A00;
+    --merged:#1E7A3C; --mergedbg:rgba(37,121,59,.12); --mergedbg2:rgba(37,121,59,.22);
     --radius:12px; --rest:0 1px 2px var(--shadow); --hover:0 16px 34px var(--shadow);
     --maxw:900px;
   }
@@ -34,6 +35,7 @@
     --grid:rgba(125,160,215,0); --gridb:rgba(125,160,215,0); --float:rgba(115,157,220,.14); --floatg:rgba(240,166,58,.15); --flr:rgba(234,67,53,.21); --fly:rgba(251,188,4,.21); --flb:rgba(66,133,244,.22); --flgr:rgba(52,168,83,.21); --spot:rgba(105,152,230,.17);
     --au1:rgba(194,120,3,0); --au2:rgba(64,118,205,0); --au3:rgba(64,118,205,0); --nv:#76B900;
     --goldink:#f0a63a; --brandgold:#E9A23B;
+    --merged:#5BC284; --mergedbg:rgba(52,168,83,.16); --mergedbg2:rgba(52,168,83,.28);
   }
   *{box-sizing:border-box}
   html{scroll-behavior:smooth}
@@ -231,6 +233,8 @@
   [data-theme="dark"] .tlogo .tl-l{display:none}[data-theme="dark"] .tlogo .tl-d{display:block}
   .stat .ft a,.stat .fs a{color:inherit;text-decoration:none;border-bottom:1.5px solid var(--line);transition:border-color .2s,color .2s}
   .stat .ft a:hover,.stat .fs a:hover{color:var(--duo);border-color:var(--duo)}
+  .stat .fs a.mpr{display:inline-block;padding:1.5px 9px;border-radius:999px;background:var(--mergedbg);border-bottom:none;color:var(--merged);font-weight:700}
+  .stat .fs a.mpr:hover{color:var(--merged);background:var(--mergedbg2);border-bottom:none}
   .stat .fs{margin-top:4px}
   .stat .fs .ln{display:block}
   .stat .fs b{color:var(--ink);font-weight:700}
@@ -241,6 +245,8 @@
   .authors .aff-s{color:var(--cardinal)}
   [data-theme="dark"] .authors .aff-s{color:#D2524C}
   .authors .eqs{color:var(--brandgold);font-size:1.15em}
+  .authors .eq .eqs{font-size:1.6em}
+  .authors .eq .cld{font-size:1.75em}
   .authors .cld{color:var(--papername);font-size:1.3em}
   .authors .tier-first{margin-bottom:.5em}
   .authors .tier-last{margin-top:.5em}
@@ -307,7 +313,7 @@
 <main>
 <section>
   <div class="wrap video reveal">
-    <video src="assets/DuoDiscover.mp4" autoplay muted loop playsinline controls poster="assets/poster.png" aria-label="DuoDiscover method overview (silent animation)"></video>
+    <video src="assets/duodiscover-video.mp4" autoplay muted loop playsinline controls poster="assets/poster.png" aria-label="DuoDiscover method overview (silent animation)"></video>
   </div>
 </section>
 
@@ -350,10 +356,10 @@
     <h2 id="h-high">Highlights</h2>
     <div class="grid">
       <div class="stat"><div class="tlogo"><span class="pl"><svg class="nvic" width="42" height="30" viewBox="0 0 40 28" fill="none" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="36" height="18" rx="4"/><circle cx="14" cy="13" r="5.6"/><circle cx="14" cy="13" r="1.6" fill="currentColor" stroke="none"/><path d="M25 9.5h8M25 13h8M25 16.5h5"/><path d="M10 22v3M20 22v3M30 22v3"/></svg></span></div><div class="big">#1</div><div class="ft"><a href="https://research.nvidia.com/benchmarks/sol-execbench" target="_blank" rel="noopener">SOL-ExecBench&nbsp;&#8599;</a></div><div class="fs"><span class="nv">NVIDIA</span>&#8217;s B200 leaderboard<br/><b>121</b> of 235 kernels*</div></div>
-      <div class="stat"><div class="tlogo"><span class="pl"><img class="tl-l" src="assets/task_swe.png" alt=""/><img class="tl-d" src="assets/task_swe_d.png" alt=""/></span></div><div class="big count" data-target="15.02" data-dec="2" data-suf="&times;">0.00&times;</div><div class="ft"><a href="https://arxiv.org/abs/2511.06090" target="_blank" rel="noopener">SWE-fficiency&nbsp;&#8599;</a></div><div class="fs">speedup on real repos<br/>human experts: <b>6.90&times;</b></div></div>
+      <div class="stat"><div class="tlogo"><span class="pl"><img class="tl-l" src="assets/task_swe.png" alt=""/><img class="tl-d" src="assets/task_swe_d.png" alt=""/></span></div><div class="big count" data-target="15.02" data-dec="2" data-suf="&times;">0.00&times;</div><div class="ft"><a href="https://arxiv.org/abs/2511.06090" target="_blank" rel="noopener">SWE-fficiency&nbsp;&#8599;</a></div><div class="fs">real Python repos &middot; 15 min per true eval<br/>human experts: <b>6.90&times;</b></div></div>
       <div class="stat"><div class="tlogo"><span class="pl"><img class="tl-l" src="assets/task_vllm_l.png" alt=""/><img class="tl-d" src="assets/task_vllm_d.png" alt=""/></span></div><div class="big count" data-target="1.92" data-dec="2" data-suf="&times;">0.00&times;</div><div class="ft"><a href="https://github.com/vllm-project/vllm" target="_blank" rel="noopener">vLLM serving&nbsp;&#8599;</a></div><div class="fs">~85&thinsp;min per true eval<br/>Claude Code: <b>1.07&times;</b></div></div>
       <div class="stat"><div class="tlogo"><span class="pl"><svg class="tic" width="38" height="30" viewBox="0 0 36 30" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><rect x="5.5" y="7" width="25" height="16" rx="3"/><rect x="14" y="11.5" width="8" height="7" rx="1.6" fill="#C27803" stroke="none"/><path d="M10.5 7V3M15.5 7V3M20.5 7V3M25.5 7V3M10.5 27v-4M15.5 27v-4M20.5 27v-4M25.5 27v-4M5.5 11H2M5.5 19H2M30.5 11H34M30.5 19H34"/></svg></span></div><div class="big count" data-pre="+" data-target="6.3" data-dec="1" data-suf="%">+0.0%</div><div class="ft"><a href="https://sites.google.com/view/dpc4-2026/home" target="_blank" rel="noopener">CPU prefetcher &middot; DPC4&nbsp;&#8599;</a></div><div class="fs">up to 28&thinsp;h per true eval<br/>best human design: <b>+3.5%</b></div></div>
-      <div class="stat"><div class="tlogo"><span class="pl"><img class="ftk tl-l" src="assets/task_freetoken_l.svg" alt=""/><img class="ftk tl-d" src="assets/task_freetoken_d.svg" alt=""/></span></div><div class="big count" data-target="1.44" data-dec="2" data-suf="&times;">0.00&times;</div><div class="ft"><a href="https://github.com/FlashML-org/FreeToken" target="_blank" rel="noopener">FreeToken &middot; MoE decode&nbsp;&#8599;</a></div><div class="fs">Claude Code: <b>1.05&times;</b><br/><a href="https://github.com/FlashML-org/FreeToken/pull/619" target="_blank" rel="noopener">merged PR&nbsp;&#8599;</a></div></div>
+      <div class="stat"><div class="tlogo"><span class="pl"><img class="ftk tl-l" src="assets/task_freetoken_l.svg" alt=""/><img class="ftk tl-d" src="assets/task_freetoken_d.svg" alt=""/></span></div><div class="big count" data-target="1.44" data-dec="2" data-suf="&times;">0.00&times;</div><div class="ft"><a href="https://github.com/FlashML-org/FreeToken" target="_blank" rel="noopener">FreeToken &middot; MoE decode&nbsp;&#8599;</a></div><div class="fs">~70 min per true eval<br/>Claude Code: <b>1.05&times;</b> &middot; <a class="mpr" href="https://github.com/FlashML-org/FreeToken/pull/619" target="_blank" rel="noopener">merged PR&nbsp;&#8599;</a></div></div>
       <div class="stat"><div class="tlogo"><span class="pl"><svg class="tic" width="30" height="32" viewBox="0 0 30 32" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="15" cy="18.5" r="10.5"/><path d="M12 2.5h6M15 2.5v4.5"/><path d="M23.3 9.3l2.2-2.2"/><path d="M15 18.5l5-5.5" stroke="#C27803" stroke-width="2.8"/><circle cx="15" cy="18.5" r="1.8" fill="#C27803" stroke="none"/></svg></span></div><div class="big count" data-target="2.9" data-dec="1" data-suf="&times;">0.0&times;</div><div class="ft">faster than Claude Code</div><div class="fs">same score &middot; <b>2.8&thinsp;h</b> vs 8&thinsp;h<br/><b>13</b> vs 76 evals &middot; <b>$80</b> vs $309</div></div>
     </div>
     <p class="gridnote">*&nbsp;Leaderboard standings as of Sep&nbsp;10,&nbsp;2026.</p>
